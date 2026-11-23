@@ -112,7 +112,7 @@ Es el código de la web en producción, publicado sin credenciales ni datos de u
 
 ## Autor
 
-**Marco Luna** · [GitHub](https://github.com/maarcoslunna) · [LinkedIn](https://www.linkedin.com/in/marco-luna-a40a56424/) · info@conectaobra10.es
+**Marco Luna** · [GitHub](https://github.com/maarcoslunna) · [LinkedIn](www.linkedin.com/in/marcolunadev) · marcoslunasantos23@gmail.com
 
 ## Licencia
 
