@@ -1,5 +1,11 @@
 # ConectaObra
 
+![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-InnoDB-003545?logo=mariadb&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black)
+![Stripe](https://img.shields.io/badge/Stripe-pagos-635BFF?logo=stripe&logoColor=white)
+![Estado](https://img.shields.io/badge/estado-en%20producci%C3%B3n-2ea44f)
+
 **Red B2B para el sector de la construcción.** Pone en contacto a constructoras, subcontratas, instaladores, ingenierías y proveedores para que encuentren colaboradores y oportunidades sin depender solo de su agenda de contactos.
 
 🌐 En producción: **[conectaobra10.es](https://conectaobra10.es)**
@@ -7,6 +13,10 @@
 > Proyecto real, publicado y en funcionamiento. Está hecho sin frameworks a propósito: PHP, JavaScript y CSS a pelo, con una base de datos MariaDB.
 
 ---
+
+## Estado del proyecto
+
+En producción y en desarrollo activo. Cubre el proyecto de extremo a extremo: frontend, API, base de datos, pagos, correo y despliegue.
 
 ## Qué hace
 
@@ -112,8 +122,9 @@ Es el código de la web en producción, publicado sin credenciales ni datos de u
 
 ## Autor
 
-**Marco Luna** · [GitHub](https://github.com/maarcoslunna) · [LinkedIn](www.linkedin.com/in/marcolunadev) · marcoslunasantos23@gmail.com
+**Marco Luna** · [GitHub](https://github.com/maarcoslunna) · [LinkedIn](https://www.linkedin.com/in/marcolunadev) · marcoslunasantos23@gmail.com
 
 ## Licencia
 
 Código publicado para consulta y como muestra de trabajo. Todos los derechos reservados; consulta [`LICENSE`](LICENSE). Si quieres reutilizar algo, escríbeme.
+
