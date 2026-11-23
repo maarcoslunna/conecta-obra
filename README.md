@@ -83,8 +83,8 @@ Hay una explicación más detallada en [`docs/ARQUITECTURA.md`](docs/ARQUITECTUR
 Necesitas PHP 8.1+ y MariaDB/MySQL.
 
 ```bash
-git clone https://github.com/maarcoslunna/conectaobra.git
-cd conectaobra/public
+git clone https://github.com/maarcoslunna/conecta-obra.git
+cd conecta-obra/public
 
 # 1. Configuración
 cp config.example.php config.php            # y rellena tus datos
