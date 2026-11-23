@@ -1,0 +1,45 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mi panel | ConectaObra</title><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="assets/ui.css?v=56"><script src="assets/ui.js?v=56" defer></script></head><body data-private-page="true">
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><img src="assets/logo-symbol.png" alt=""></span><b>CONECTA<span>OBRA</span></b></a><div class="nav-actions"><a class="btn btn-outline-dark" href="oportunidades.html">Oportunidades</a><button class="btn btn-outline-dark" data-logout>Salir</button></div></div></header>
+<main class="dashboard"><div class="container"><section class="dash-hero"><p class="greet"><span id="greet">Hola</span></p><h1><span data-auth-company>tu empresa</span></h1><p class="lead">Tu espacio para generar nuevas conexiones comerciales.</p><div class="dash-cta"><a class="btn btn-primary" href="oportunidades.html#nueva">Publicar oportunidad</a><a class="btn btn-outline-dark" href="perfil.html">Completar perfil</a><a class="btn btn-primary" href="/conectajob/acceso-desde-conectaobra.php" aria-label="Gestionar ofertas de empleo en ConectaJob">Gestionar empleo · ConectaJob</a></div></section><div class="stats"><div class="stat"><strong id="statOpps">—</strong><span>Oportunidades activas</span></div><div class="stat"><strong id="statCompanies">—</strong><span>Empresas en la red</span></div><div class="stat"><strong id="statPlan">—</strong><span>Tu plan actual</span></div></div><section class="panel" id="billingBox"><span>Cargando facturación…</span></section><section class="panel" style="margin:22px 0;padding:22px"><h2>Intermediación a comisión</h2><p>Solicita apoyo comercial sin cuota fija. Las condiciones se pactan por escrito para cada operación.</p><a class="btn btn-primary" href="intermediacion.html">Nueva solicitud</a><div id="mediationMine" style="margin-top:16px">Cargando solicitudes…</div></section><div class="dash-cols"><section class="dash-block"><header><h2>Tus oportunidades</h2><a href="oportunidades.html#mis">Gestionar</a></header><div class="mini-list" id="dashOpps"><div class="sk sm"></div><div class="sk sm"></div></div></section><section class="dash-block"><header><h2>Empresas de la red</h2><a href="directorio.html">Ver directorio</a></header><div class="mini-list" id="dashCompanies"><div class="sk sm"></div><div class="sk sm"></div></div></section></div><nav class="quick-links" aria-label="Accesos rápidos"><a class="quick" href="perfil.html"><span class="ico-wrap"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Editar perfil</a><a class="quick" href="oportunidades.html"><span class="ico-wrap"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3"/></svg></span>Ver oportunidades</a><a class="quick" href="directorio.html"><span class="ico-wrap"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>Buscar empresas</a><a class="quick" href="planes.html"><span class="ico-wrap"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Planes y facturación</a></nav></div></main><script src="assets/app.js?v=57"></script><script>
+(async()=>{const el=document.getElementById('mediationMine');try{const r=await fetch('api.php?action=mediation_mine',{credentials:'same-origin'}).then(x=>x.json());if(!r.ok){el.textContent=r.error||'No se pudieron cargar las solicitudes.';return}if(!r.requests.length){el.textContent='Todavía no tienes solicitudes de intermediación.';return}const names={pending:'Pendiente',reviewing:'En estudio',accepted:'Aceptada',rejected:'Rechazada',completed:'Finalizada'};for(const x of r.requests){const card=document.createElement('article');card.style='padding:12px 0;border-bottom:1px solid #e6eaf0';const title=document.createElement('strong');title.textContent=x.subject+' · '+(names[x.status]||x.status);const note=document.createElement('p');note.textContent=x.admin_notes||'Sin observaciones todavía.';card.append(title,note);
+const docs = document.createElement("details");
+const resumenDocs = document.createElement("summary");
+resumenDocs.textContent = "Documentación";
+const listaDocs = document.createElement("ul");
+docs.append(resumenDocs, listaDocs);
+card.append(docs);
+docs.addEventListener("toggle", async () => {
+  if (!docs.open) return;
+  const baseDocs = "&cliente=1&mediation_id=" + encodeURIComponent(x.id);
+  const mostrarAviso = texto => {
+    const item = document.createElement("li");
+    item.textContent = texto;
+    listaDocs.replaceChildren(item);
+  };
+  mostrarAviso("Cargando documentos…");
+  try {
+    const respuesta = await fetch("api.php?action=mediation_documents_list" + baseDocs, {
+      credentials: "same-origin", cache: "no-store"
+    });
+    const datos = await respuesta.json();
+    if (!respuesta.ok || !datos.ok) throw new Error();
+    if (datos.documents.length === 0) {
+      mostrarAviso("Todavía no hay documentos.");
+      return;
+    }
+    listaDocs.replaceChildren();
+    for (const documento of datos.documents) {
+      const item = document.createElement("li");
+      const enlace = document.createElement("a");
+      enlace.href = "api.php?action=mediation_document_download" + baseDocs +
+        "&document_id=" + encodeURIComponent(documento.id);
+      enlace.textContent = documento.document_name;
+      item.append(enlace);
+      listaDocs.append(item);
+    }
+  } catch {
+    mostrarAviso("No se pudieron cargar los documentos.");
+  }
+});
+if(Number(x.agreement_confirmed)===1){const money=v=>Number(v).toLocaleString('es-ES',{style:'currency',currency:'EUR'});const info=document.createElement('p');info.textContent='Acuerdo registrado: '+x.commission_percent+' % · Contrato: '+money(x.contract_amount)+' · Cobrado: '+money(x.collected_amount||0)+' · Comisión calculada sobre cobros: '+money(Number(x.collected_amount||0)*Number(x.commission_percent)/100)+'. No supone cargo automático.';card.append(info)}el.append(card)}el.firstChild?.nodeType===3&&(el.firstChild.textContent='')}catch(e){el.textContent='No se pudieron cargar las solicitudes.'}})();
+</script><script src="assets/contactos-aviso-v1.js?v=1" defer></script><script src="assets/conexiones-panel-v1.js?v=1" defer></script><script src="assets/conexiones-indicador-v1.js?v=1" defer></script></body></html>

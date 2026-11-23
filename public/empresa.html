@@ -1,0 +1,293 @@
+S<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Empresa | ConectaObra</title>
+  <meta name="description" content="Perfil profesional de empresa en ConectaObra.">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="assets/ui.css?v=56">
+<script src="assets/ui.js?v=56" defer></script></head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><img src="assets/logo-symbol.png" alt=""></span><b>CONECTA<span>OBRA</span></b></a>
+    <div class="nav-actions"><a class="btn btn-outline-dark" href="directorio.html">← Volver al directorio</a></div>
+  </div>
+</header>
+<main class="company-detail-page">
+  <div class="container">
+    <div id="companyLoading" class="loading">Cargando empresa...</div>
+    <div id="companyError" class="error-box panel" hidden>
+      <div class="eyebrow">Empresa</div>
+      <h1>No se ha podido cargar</h1>
+      <p id="companyErrorText"></p>
+      <div class="form-actions"><a class="btn btn-primary" href="directorio.html">Volver al directorio</a></div>
+    </div>
+    <article id="companyDetail" class="company-profile-card" hidden>
+      <div class="company-profile-head">
+        <div id="companyAvatar" class="avatar avatar-xl" aria-hidden="true"></div><div>
+          <div class="eyebrow">Perfil profesional</div>
+          <span id="companyType" class="badge"></span><span id="companyFounder" class="badge" hidden>🏆 Empresa Fundadora</span><span id="companyInvited" class="badge" hidden>Empresa Invitada</span>
+          <h1 id="companyName"></h1>
+          <p id="companyLocation" class="company-location"></p><p id="companyAddress" class="company-location" hidden></p>
+        </div>
+      </div>
+      <div id="guestAccess" class="panel" hidden style="margin:20px 0"><div class="eyebrow">Acceso a la red profesional</div><h2>Regístrate gratis para ver el perfil completo</h2><p>Accede a la información profesional de esta empresa y utiliza ConectaObra para conectar con empresas del sector.</p><div class="detail-actions"><a class="btn btn-primary" href="registro-empresas.html">Crear cuenta gratis</a><a class="btn btn-outline-dark" href="login.html">Iniciar sesión</a></div></div>
+      <div class="company-profile-grid" id="companyPrivateContent">
+        <section class="company-profile-main">
+          <h2>Sobre la empresa</h2>
+          <p id="companyDescription"></p>
+          <div class="company-tags">
+            <div><strong>Especialidad</strong><span id="companySpecialty"></span></div>
+            <div><strong>Zona de actuación</strong><span id="companyZone"></span></div>
+          </div>
+        </section>
+        <section class="company-cv" id="companyCvSection" hidden>
+  <div class="company-cv-header">
+    <div>
+      <div class="eyebrow">CV PROFESIONAL</div>
+      <h2>Experiencia y capacidad</h2>
+    </div>
+  </div>
+
+  <div class="company-cv-stats">
+    <div class="company-cv-stat" id="companyEmployeesBox" hidden>
+      <span>Equipo</span>
+      <strong id="companyEmployees"></strong>
+    </div>
+
+    <div class="company-cv-stat" id="companyExperienceBox" hidden>
+      <span>Experiencia</span>
+      <strong id="companyExperience"></strong>
+    </div>
+    <div class="company-cv-stat" id="companyAvailabilityBox" hidden>
+  <span>Disponibilidad</span>
+  <strong id="companyAvailability"></strong>
+</div>
+  </div>
+
+  <div class="company-cv-block" id="companyAreasBox" hidden>
+    <h3>Áreas de experiencia</h3>
+    <div class="company-cv-areas" id="companyAreas"></div>
+  </div>
+
+  <div class="company-cv-block" id="companyWorksBox" hidden>
+    <h3>Trabajos realizados</h3>
+    <p id="companyWorks"></p>
+  </div>
+
+  <div class="company-cv-block" id="companyCertificationsBox" hidden>
+    <h3>Certificaciones y acreditaciones</h3>
+    <p id="companyCertifications"></p>
+  </div>
+</section>
+        <aside class="company-contact-card">
+          <h2 id="companyContactTitle">¿Quieres colaborar?</h2>
+          <p id="companyContactText">Contacta con la empresa para plantear una colaboración o necesidad concreta.</p>
+          <div class="detail-actions">
+            <a id="companyContact" class="btn btn-primary" href="contacto.html">Solicitar contacto</a>
+            <a id="companyCv" class="btn btn-outline-dark" href="#" hidden>Ver CV profesional</a>
+            <a id="companyWeb" class="btn btn-outline-dark" href="#" target="_blank" rel="noopener" hidden>Visitar web</a>
+          </div>
+        </aside>
+      </div>
+    </article>
+  </div>
+</main>
+<footer class="footer"><div class="container"><div class="footer-social"><strong>Síguenos</strong><a class="linkedin-icon" href="https://www.linkedin.com/in/marco-luna-a40a56424/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Marco Luna ConectaObra" title="LinkedIn de Marco Luna ConectaObra"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="1" width="22" height="22" rx="4"></rect><path d="M7 9.5V17M7 7.2v.1M11 17v-4.1c0-1.6.8-2.6 2.2-2.6 1.4 0 2.2 1 2.2 2.6V17M11 10.5v6.5"></path></svg></a></div>
+<div class="footer-bottom"><span>© <span data-year></span> ConectaObra. Todos los derechos reservados.</span><span>info@conectaobra10.es · Sevilla, España </span></div></div> <a class="footer-whatsapp" href="https://wa.me/34694209313?text=Hola%20ConectaObra%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20la%20plataforma." target="_blank" rel="noopener" aria-label="WhatsApp · Contactar">💬 WhatsApp · Contactar</a></footer>
+<script src="assets/main.js"></script>
+<script>
+(() => {
+  const API = 'api.php';
+  const loading = document.getElementById('companyLoading');
+  const error = document.getElementById('companyError');
+  const errorText = document.getElementById('companyErrorText');
+  const detail = document.getElementById('companyDetail');
+
+  function esc(value) {
+    return String(value ?? '').replace(/[&<>"']/g, m => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    }[m]));
+  }
+
+  async function loadCompany() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const source=params.get('source')||'registered';
+
+    if (!id || !/^\d+$/.test(id)) {
+      showError('La empresa indicada no es válida.');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API}?action=company&id=${encodeURIComponent(id)}&source=${encodeURIComponent(source)}`, { cache: 'no-store' });
+      const data = await response.json();
+
+      if (!data.ok || !data.company) {
+        showError(data.error || 'No se ha encontrado la empresa.');
+        return;
+      }
+
+      render(data.company);
+    } catch (e) {
+      showError('No se ha podido conectar con el servidor. Inténtalo de nuevo.');
+    }
+  }
+
+  function render(c) {
+    document.title = `${c.empresa} | ConectaObra`;
+
+    const invited=c.source==='invited';
+    const guest=!!c.public_preview;
+    document.getElementById('companyType').textContent = invited ? 'Empresa' : (c.tipo || 'Empresa');
+    const founderBadge=document.getElementById('companyFounder');
+    const founderVisible=!invited && Number(c.founder_company)===1 && c.founder_status==='active' && (!c.founder_expires_at || new Date(c.founder_expires_at.replace(' ','T'))>new Date());
+    if(founderBadge){founderBadge.hidden=!founderVisible;founderBadge.style.setProperty('display',founderVisible?'inline-flex':'none','important');}
+    const invitedBadge=document.getElementById('companyInvited');
+    if(invitedBadge){invitedBadge.hidden=!invited;invitedBadge.style.setProperty('display',invited?'inline-flex':'none','important');}
+    document.getElementById('companyName').textContent = c.empresa || '';
+    const companyAvatar = document.getElementById('companyAvatar');
+
+if (companyAvatar) {
+  if (c.logo) {
+    companyAvatar.className = 'avatar avatar-xl company-avatar-logo';
+    companyAvatar.innerHTML = `<img src="${esc(c.logo)}" alt="Logo de ${esc(c.empresa)}">`;
+  } else if (window.coAvatar) {
+    window.coAvatar(companyAvatar, c.empresa);
+  }
+}
+    document.getElementById('companyLocation').textContent = `📍 ${c.provincia || ''}${c.zona ? ' · ' + c.zona : ''}`;
+    const addr=document.getElementById('companyAddress'); if(addr){addr.textContent=c.address?`📌 ${c.address}`:'';addr.hidden=!c.address;}
+    document.getElementById('companyDescription').textContent = guest ? '' : (invited ? 'Esta empresa está invitada a ConectaObra y todavía no ha activado su perfil.' : (c.descripcion || 'Esta empresa todavía no ha añadido una descripción.'));
+    document.getElementById('companySpecialty').textContent = c.especialidad || (invited?'Perfil pendiente de activación':'—');
+    document.getElementById('companyZone').textContent = c.zona || c.provincia || '—';
+    const cvSection = document.getElementById('companyCvSection');
+const cvEmployees = document.getElementById('companyEmployees');
+const cvEmployeesBox = document.getElementById('companyEmployeesBox');
+const cvExperience = document.getElementById('companyExperience');
+const cvExperienceBox = document.getElementById('companyExperienceBox');
+const cvAvailability = document.getElementById('companyAvailability');
+const cvAvailabilityBox = document.getElementById('companyAvailabilityBox');
+if (cvSection) {
+    const hasCv = c.empleados || c.experiencia || c.disponibilidad;
+
+    cvSection.hidden = !hasCv;
+
+    if (cvEmployeesBox) {
+        cvEmployeesBox.hidden = !c.empleados;
+        if (cvEmployees) cvEmployees.textContent = c.empleados || '';
+    }
+
+    if (cvExperienceBox) {
+        cvExperienceBox.hidden = !c.experiencia;
+        if (cvExperience) cvExperience.textContent = c.experiencia || '';
+    }
+if (cvAvailabilityBox) {
+  cvAvailabilityBox.hidden = !c.disponibilidad;
+  if (cvAvailability) cvAvailability.textContent = c.disponibilidad || '';
+}}
+    // Trabajos realizados
+const cvWorksBox = document.getElementById('companyWorksBox');
+const cvWorks = document.getElementById('companyWorks');
+
+if (cvWorksBox) {
+  const hasWorks = !!(c.trabajos_realizados && String(c.trabajos_realizados).trim());
+  cvWorksBox.hidden = !hasWorks;
+  if (cvWorks) cvWorks.textContent = hasWorks ? c.trabajos_realizados : '';
+}
+
+// Certificaciones y acreditaciones
+const cvCertificationsBox = document.getElementById('companyCertificationsBox');
+const cvCertifications = document.getElementById('companyCertifications');
+
+if (cvCertificationsBox) {
+  const hasCertifications = !!(c.certificaciones && String(c.certificaciones).trim());
+  cvCertificationsBox.hidden = !hasCertifications;
+  if (cvCertifications) cvCertifications.textContent = hasCertifications ? c.certificaciones : '';
+}
+
+// Áreas de experiencia
+const cvAreasBox = document.getElementById('companyAreasBox');
+const cvAreas = document.getElementById('companyAreas');
+
+if (cvAreasBox) {
+  const areas = String(c.areas_experiencia || '')
+    .split(/[\n,;]+/)
+    .map(area => area.trim())
+    .filter(Boolean);
+
+  cvAreasBox.hidden = areas.length === 0;
+
+  if (cvAreas) {
+    cvAreas.innerHTML = '';
+
+    areas.forEach(area => {
+      const span = document.createElement('span');
+      span.textContent = area;
+      cvAreas.appendChild(span);
+    });
+  }
+}
+    const guestAccess=document.getElementById('guestAccess'); const privateContent=document.getElementById('companyPrivateContent');
+    if(guestAccess){guestAccess.hidden=!guest;guestAccess.style.setProperty('display',guest?'block':'none','important');}
+    if(privateContent){privateContent.hidden=guest;privateContent.style.setProperty('display',guest?'none':'grid','important');}
+    const contactBtn = document.getElementById('companyContact');
+    const contactTitle=document.getElementById('companyContactTitle');
+    const contactText=document.getElementById('companyContactText');
+    if (contactBtn) {
+      if (invited || guest) {
+        contactBtn.hidden = true;
+        contactBtn.style.setProperty('display','none','important');
+        contactBtn.removeAttribute('href');
+      } else {
+        contactBtn.hidden = false;
+        contactBtn.style.removeProperty('display');
+        contactBtn.href=`contacto.html?empresa=${encodeURIComponent(c.empresa || '')}&destino=${encodeURIComponent(c.id)}`;
+        contactBtn.textContent='Solicitar contacto';
+      }
+    }
+    if(contactTitle) contactTitle.textContent=invited?'Empresa invitada a ConectaObra':'¿Quieres colaborar?';
+    if(contactText) contactText.textContent=invited?'Esta empresa todavía no ha completado y activado su perfil.':'Contacta con la empresa para plantear una colaboración o necesidad concreta.';
+
+    const webBtn = document.getElementById('companyWeb');
+    if(webBtn){webBtn.hidden=true;webBtn.style.setProperty('display','none','important');webBtn.removeAttribute('href');}
+    if (!guest && c.web && webBtn) {
+      let web = c.web.trim();
+      if (!/^https?:\/\//i.test(web)) web = 'https://' + web;
+      webBtn.href = web;
+      webBtn.hidden = false;
+      webBtn.style.removeProperty('display');
+    }
+// Botón CV profesional
+const cvBtn = document.getElementById('companyCv');
+
+const hasCv =
+    (c.empleados && String(c.empleados).trim()) ||
+    (c.experiencia && String(c.experiencia).trim()) ||
+    (c.trabajos_realizados && String(c.trabajos_realizados).trim()) ||
+    (c.certificaciones && String(c.certificaciones).trim());
+
+if (cvBtn && hasCv) {
+    cvBtn.hidden = false;
+    cvBtn.href = 'cv.html?id=' + encodeURIComponent(c.id);
+}
+    loading.hidden = true;
+    detail.hidden = false;
+    if(window.coClamp) window.coClamp(document.getElementById('companyDescription'));
+  }
+
+  function showError(message) {
+    loading.hidden = true;
+    detail.hidden = true;
+    errorText.textContent = message;
+    error.hidden = false;
+  }
+
+  loadCompany();
+})();
+</script>
+<div class="legal-strip"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="condiciones.html">Condiciones</a><a href="cookies.html">Cookies</a></div></body>
+</html>

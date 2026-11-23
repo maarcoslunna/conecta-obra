@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CV profesional | ConectaObra</title>
+
+<link rel="stylesheet" href="assets/style.css">
+
+<style>
+.cv-page{
+    min-height:100vh;
+    background:#f5f7f9;
+    padding-bottom:60px;
+}
+
+.cv-top{
+    background:#132638;
+    color:#fff;
+    padding:38px 24px;
+}
+
+.cv-top-inner{
+    max-width:980px;
+    margin:auto;
+}
+
+.cv-back{
+    display:inline-block;
+    margin-bottom:30px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    opacity:.9;
+}
+
+.cv-back:hover{
+    opacity:1;
+}
+
+.cv-eyebrow{
+    color:#ff6900;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.cv-title{
+    margin:0;
+    color:#fff;
+    font-size:42px;
+    line-height:1.1;
+}
+
+.cv-subtitle{
+    margin:10px 0 0;
+    color:#cbd5df;
+    font-size:16px;
+}
+
+.cv-container{
+    max-width:980px;
+    margin:-1px auto 0;
+    padding:35px 24px 0;
+}
+
+.cv-card{
+    background:#fff;
+    border:1px solid #e2e8ee;
+    border-radius:22px;
+    padding:38px;
+    box-shadow:0 18px 45px rgba(15,35,55,.08);
+}
+
+.cv-section-title{
+    font-size:24px;
+    color:#102030;
+    margin:0 0 8px;
+}
+
+.cv-section-text{
+    color:#6b7785;
+    margin:0 0 26px;
+}
+
+.cv-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-bottom:35px;
+}
+
+.cv-stat{
+    background:#f7f9fb;
+    border:1px solid #e0e6ec;
+    border-left:4px solid #ff6900;
+    border-radius:15px;
+    padding:22px;
+}
+
+.cv-stat-label{
+    display:block;
+    color:#687583;
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    margin-bottom:8px;
+}
+
+.cv-stat-value{
+    color:#102030;
+    font-size:25px;
+    font-weight:800;
+}
+
+.cv-block{
+    border-top:1px solid #e4e9ee;
+    padding-top:30px;
+    margin-top:30px;
+}
+
+.cv-block h2{
+    margin:0 0 14px;
+    color:#102030;
+    font-size:21px;
+}
+
+.cv-content{
+    color:#334150;
+    line-height:1.7;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+}
+  
+  .cv-areas{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.cv-area-item{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 14px;
+  border:1px solid #d7e0e8;
+  border-left:4px solid #ff6b00;
+  border-radius:12px;
+  background:#f7f9fb;
+  color:#102030;
+  font-weight:600;
+  line-height:1.3;
+}
+
+.cv-empty{
+    color:#8a949e;
+    font-style:italic;
+}
+
+.cv-footer-actions{
+    margin-top:35px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.cv-button{
+    display:inline-block;
+    background:#ff6900;
+    color:#fff;
+    text-decoration:none;
+    padding:13px 20px;
+    border-radius:12px;
+    font-weight:800;
+}
+
+.cv-button-secondary{
+    background:#fff;
+    color:#132638;
+    border:1px solid #ccd5dd;
+}
+
+.cv-loading,
+.cv-error{
+    max-width:980px;
+    margin:50px auto;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 12px 35px rgba(15,35,55,.08);
+}
+
+@media(max-width:700px){
+    .cv-title{
+        font-size:32px;
+    }
+
+    .cv-stats{
+        grid-template-columns:1fr;
+    }
+
+    .cv-card{
+        padding:25px 20px;
+    }
+
+    .cv-container{
+        padding-left:15px;
+        padding-right:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cv-page">
+
+    <header class="cv-top">
+        <div class="cv-top-inner">
+
+            <a id="backTop"
+               class="cv-back"
+               href="directorio.html">
+               ← Volver a la empresa
+            </a>
+
+            <div class="cv-eyebrow">CV PROFESIONAL</div>
+
+            <h1 id="companyName" class="cv-title">
+                Empresa
+            </h1>
+
+            <p class="cv-subtitle">
+                Experiencia, capacidad y trayectoria profesional
+            </p>
+
+        </div>
+    </header>
+
+
+    <div id="loading" class="cv-loading">
+        Cargando CV profesional...
+    </div>
+
+
+    <div id="errorBox" class="cv-error" hidden>
+        <strong>No se ha podido cargar el CV.</strong>
+        <p id="errorText"></p>
+    </div>
+
+
+    <main id="cvContent"
+          class="cv-container"
+          hidden>
+
+        <div class="cv-card">
+
+            <h2 class="cv-section-title">
+                Capacidad de la empresa
+            </h2>
+
+            <p class="cv-section-text">
+                Información profesional facilitada por la empresa en ConectaObra.
+            </p>
+
+
+            <div class="cv-stats">
+
+                <div class="cv-stat">
+                    <span class="cv-stat-label">
+                        Número de empleados
+                    </span>
+
+                    <span id="empleados"
+                          class="cv-stat-value">
+                        —
+                    </span>
+                </div>
+
+
+                <div class="cv-stat">
+                    <span class="cv-stat-label">
+                        Años de experiencia
+                    </span>
+
+                    <span id="experiencia"
+                          class="cv-stat-value">
+                        —
+                    </span>
+                </div>
+<div class="cv-stat">
+  <span class="cv-stat-label">
+    Disponibilidad
+  </span>
+
+  <span id="disponibilidad"
+        class="cv-stat-value">
+    -
+  </span>
+</div>
+            </div>
+
+
+            <section class="cv-block">
+
+                <h2>Trabajos realizados</h2>
+
+                <div id="trabajos"
+                     class="cv-content">
+                </div>
+
+            </section>
+
+
+            <section class="cv-block">
+
+                <h2>
+                    Certificaciones y acreditaciones
+                </h2>
+
+                <div id="certificaciones"
+                     class="cv-content">
+                </div>
+
+            </section>
+          <section class="cv-block" id="areasSection" hidden>
+
+  <h2>Áreas de experiencia</h2>
+
+  <div id="areasExperienciaCv" class="cv-areas"></div>
+
+</section>
+
+
+            <div class="cv-footer-actions">
+
+                <a id="backBottom"
+                   class="cv-button cv-button-secondary"
+                   href="directorio.html">
+                    ← Volver al perfil de empresa
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+(async function(){
+
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+
+    const loading =
+        document.getElementById('loading');
+
+    const errorBox =
+        document.getElementById('errorBox');
+
+    const errorText =
+        document.getElementById('errorText');
+
+    const content =
+        document.getElementById('cvContent');
+
+    const backTop =
+        document.getElementById('backTop');
+
+    const backBottom =
+        document.getElementById('backBottom');
+
+
+    if(!id){
+
+        loading.hidden = true;
+
+        errorText.textContent =
+            'No se ha indicado ninguna empresa.';
+
+        errorBox.hidden = false;
+
+        return;
+    }
+
+
+    const companyUrl =
+        'empresa.html?id=' +
+        encodeURIComponent(id);
+
+    backTop.href = companyUrl;
+    backBottom.href = companyUrl;
+
+
+    try{
+
+        const response = await fetch(
+            'api.php?action=company&id=' +
+            encodeURIComponent(id),
+            {
+                credentials:'same-origin',
+                cache:'no-store'
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if(
+            !response.ok ||
+            !data.ok ||
+            !data.company
+        ){
+            throw new Error(
+                data.error ||
+                'No se ha podido cargar el CV.'
+            );
+        }
+
+
+        const c = data.company;
+
+
+        document.getElementById(
+            'companyName'
+        ).textContent =
+            c.empresa || 'Empresa';
+
+
+        document.getElementById(
+            'empleados'
+        ).textContent =
+            c.empleados || 'No indicado';
+
+
+        document.getElementById(
+            'experiencia'
+        ).textContent =
+            c.experiencia || 'No indicada';
+
+document.getElementById(
+    'disponibilidad'
+).textContent =
+    c.disponibilidad || 'No indicada';
+        // Convierte cada línea escrita por la empresa en un elemento visual
+function mostrarLista(elemento, texto, mensajeVacio) {
+
+    elemento.innerHTML = '';
+
+    const valor = String(texto || '').trim();
+
+    if (!valor) {
+        elemento.textContent = mensajeVacio;
+        elemento.classList.add('cv-empty');
+        return;
+    }
+
+    elemento.classList.remove('cv-empty');
+
+    const items = valor
+        .split(/\r?\n/)
+        .map(item => item.trim())
+        .filter(Boolean);
+
+    items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'cv-list-item';
+        div.textContent = item;
+        elemento.appendChild(div);
+    });
+}
+
+
+// TRABAJOS REALIZADOS
+const trabajos = document.getElementById('trabajos');
+
+mostrarLista(
+    trabajos,
+    c.trabajos_realizados,
+    'La empresa todavía no ha añadido trabajos realizados.'
+);
+
+
+// CERTIFICACIONES
+const certificaciones =
+    document.getElementById('certificaciones');
+
+mostrarLista(
+    certificaciones,
+    c.certificaciones,
+    'La empresa todavía no ha añadido certificaciones o acreditaciones.'
+);
+      
+      // ÁREAS DE EXPERIENCIA
+const areasSection = document.getElementById('areasSection');
+const areasExperienciaCv = document.getElementById('areasExperienciaCv');
+
+const areas = (c.areas_experiencia || '')
+  .split('|')
+  .map(area => area.trim())
+  .filter(Boolean);
+
+if (areas.length > 0) {
+  areasExperienciaCv.innerHTML = '';
+
+  areas.forEach(area => {
+    const item = document.createElement('div');
+    item.className = 'cv-area-item';
+    item.textContent = area;
+    areasExperienciaCv.appendChild(item);
+  });
+
+  areasSection.hidden = false;
+} else {
+  areasSection.hidden = true;
+}
+
+
+        loading.hidden = true;
+        content.hidden = false;
+
+
+    }catch(err){
+
+        loading.hidden = true;
+
+        errorText.textContent =
+            err.message ||
+            'No se ha podido conectar con el servidor.';
+
+        errorBox.hidden = false;
+    }
+
+})();
+</script>
+
+</body>
+</html>

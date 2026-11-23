@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Planes | ConectaObra</title><meta name="description" content="Elige el plan de ConectaObra que mejor encaja con tu empresa."><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="assets/ui.css?v=56"><script src="assets/ui.js?v=56" defer></script><style>
+.pricing-card .co-price-yearly,
+body.plans-yearly .pricing-card .co-price-monthly { display: none; }
+body.plans-yearly .pricing-card .co-price-yearly { display: inline; }
+body:not(.plans-yearly) .pricing-card button[data-plan$="_yearly"],
+body.plans-yearly .pricing-card button[data-plan$="_monthly"] {
+  display: none !important;
+}
+body:not(.plans-yearly) .pricing-card button[data-plan$="_monthly"],
+body.plans-yearly .pricing-card button[data-plan$="_yearly"] {
+  display: inline-flex !important;
+}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="container nav">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><img src="assets/logo-symbol.png" alt=""></span><b>CONECTA<span>OBRA</span></b></a>
+<button class="menu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+<nav><ul class="nav-links">
+<li><a href="index.html">Inicio</a></li>
+<li><a href="como-funciona.html">Cómo funciona</a></li>
+<li><a href="sectores.html">Sectores</a></li>
+<li><a href="directorio.html">Empresas</a></li>
+<li><a class="active" href="planes.html">Planes</a></li>
+<li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+<li><a href="login.html">Acceder</a></li>
+</ul></nav>
+<div class="nav-actions"><a class="btn btn-primary" href="registro-empresas.html">Crear perfil gratis</a></div>
+</div></header>
+<main class="dashboard"><div class="container">
+<div class="section-head center"><div class="eyebrow">Planes ConectaObra</div><h1 class="section-title">Más visibilidad. Más oportunidades.</h1><p class="section-lead">Empieza gratis y cambia de plan cuando quieras. Los precios indicados son antes de impuestos. Stripe calculará y mostrará el impuesto aplicable en el proceso de pago según la dirección fiscal indicada.</p></div>
+<div id="billingMsg" hidden></div>
+<div class="pricing-grid">
+<article class="pricing-card"><div class="eyebrow">Para empezar</div><h2>Gratuito</h2><div class="price">0 € <small>/ siempre</small></div><p class="annual-note">Sin límite de tiempo</p><ul class="checklist"><li>Perfil de empresa</li><li>Aparición en el directorio</li><li>Buscar empresas</li><li>Consultar oportunidades</li><li>1 oportunidad activa</li><li>Gestión de tus oportunidades</li></ul><a class="btn btn-outline-dark btn-block-form" href="registro-empresas.html">Crear perfil gratis</a></article>
+<article class="pricing-card featured"><div class="tag">Más elegido</div><div class="eyebrow">Para crecer</div><h2>Profesional</h2><div class="price" data-co-plan-price><span class="co-price-monthly">49 € <small>/ mes + IVA</small></span><span class="co-price-yearly">499 € <small>/ año + IVA</small></span></div><p class="annual-note"><span class="co-price-monthly">o 499 € / año + IVA</span><span class="co-price-yearly">o 49 € / mes + IVA</span></p><ul class="checklist"><li>Todo lo del plan Gratuito</li><li>20 oportunidades activas</li><li>Acceso continuo a oportunidades</li><li>Gestión de tus oportunidades</li><li>Mayor capacidad de publicación</li><li>Próximamente: ventajas de visibilidad y captación</li></ul><button class="btn btn-primary btn-block-form" data-plan="professional_monthly">Elegir Profesional · 49 €/mes + IVA</button><button class="btn btn-primary btn-block-form" data-plan="professional_yearly">Profesional · 499 €/año + IVA</button></article>
+<article class="pricing-card"><div class="eyebrow">Para máxima captación</div><h2>Premium</h2><div class="price" data-co-plan-price><span class="co-price-monthly">89 € <small>/ mes + IVA</small></span><span class="co-price-yearly">999 € <small>/ año + IVA</small></span></div><p class="annual-note"><span class="co-price-monthly">o 999 € / año + IVA</span><span class="co-price-yearly">o 89 € / mes + IVA</span></p><ul class="checklist"><li>Todo lo del plan Profesional</li><li>Oportunidades activas ilimitadas</li><li>Sin límite de capacidad de publicación</li><li>Acceso continuo a oportunidades</li><li>Máxima capacidad para trabajar dentro de la red</li><li>Próximamente: ventajas premium de visibilidad y captación</li></ul><button class="btn btn-primary btn-block-form" data-plan="premium_monthly">Elegir Premium · 89 €/mes + IVA</button><button class="btn btn-primary btn-block-form" data-plan="premium_yearly">Premium · 999 €/año + IVA</button></article>
+<article class="pricing-card"><div class="eyebrow">Servicio adicional · Compatible con todos los planes</div><h2>Intermediación a comisión</h2><div class="price">0 € <small>/ cuota fija</small></div><p class="annual-note">Condiciones por operación, acordadas por escrito</p><ul class="checklist"><li>Registro gratuito previo</li><li>Solicitud sin compromiso</li><li>Intermediación comercial personalizada</li><li>Sin comisión por registrarse</li><li>Comisión solo por operaciones pactadas y efectivamente cobradas</li></ul><a class="btn btn-outline-dark btn-block-form" href="intermediacion.html">Solicitar intermediación</a></article></div>
+<p class="form-note center">Los precios no incluyen impuestos. Stripe mostrará por separado el impuesto que corresponda según la ubicación fiscal. Para empresas de Canarias, Ceuta y Melilla, el IVA español no se aplica y el tratamiento del impuesto territorial corresponde a la normativa específica del territorio.</p><p class="form-note center">Puedes cancelar desde el portal de facturación. No guardamos datos de tarjeta en ConectaObra.</p>
+</div></main>
+<script src="assets/app.js?v=56"></script><script>document.addEventListener('DOMContentLoaded',()=>{
+  let returnPeriod;
+  try {
+    returnPeriod = sessionStorage.getItem('coPlansReturnPeriod');
+    sessionStorage.removeItem('coPlansReturnPeriod');
+  } catch {}
+  if (returnPeriod === 'yearly') {
+    document.querySelector('.plan-toggle [data-p="y"]')?.click();
+  }
+  document.querySelectorAll('[data-plan]').forEach(b=>b.addEventListener('click',async()=>{const m=await fetch('api.php?action=me').then(r=>r.json());if(!m.user){
+  try {
+    sessionStorage.setItem('coPlansReturnPeriod', b.dataset.plan.endsWith('_yearly') ? 'yearly' : 'monthly');
+  } catch {}
+  location.href='login.html?next=planes.html';
+  return;
+}const msg=document.querySelector('#billingMsg');msg.hidden=true;b.disabled=true;const r=await fetch('api.php?action=create_checkout',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':m.csrf||''},body:JSON.stringify({plan:b.dataset.plan,_csrf:m.csrf||''})}).then(x=>x.json()).catch(()=>({ok:false,error:'No se pudo conectar con el servidor.'}));b.disabled=false;if(!r.ok){msg.textContent=(r.error||'No se pudo iniciar el pago.')+(r.stripe_test_detail?'\n\nDetalle Stripe (Test): '+r.stripe_test_detail:'');msg.className='notice error';msg.hidden=false;return}location.href=r.url;}));});</script></body></html>

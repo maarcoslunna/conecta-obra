@@ -1,0 +1,12 @@
+/* CONECTAOBRA_CONTACT_NOTICE_STYLE_V1 */
+.co-contact-card,.co-contact-modal{box-sizing:border-box;background:#0d1b2a;color:#fff;border:1px solid #365268;border-radius:18px;font:16px/1.55 system-ui,sans-serif}
+.co-contact-card{padding:22px;margin:22px 0}.co-contact-card h2{font-size:20px;margin:0 0 8px;color:#fff}.co-contact-card p{color:#e5edf5;margin:8px 0}.co-contact-card .co-contact-count{font-size:24px;font-weight:800;color:#ff9b55}
+.co-contact-modal{width:min(540px,calc(100vw - 28px));max-height:85vh;max-height:85dvh;padding:28px;overflow:auto;box-shadow:0 24px 80px #0006}.co-contact-modal::backdrop{background:#06111dcc}.co-contact-brand{display:flex;align-items:center;gap:10px;margin-bottom:20px}.co-contact-brand img{object-fit:contain}.co-contact-brand strong{color:#ff9b55;font-size:20px}.co-contact-modal h2{font-size:26px;line-height:1.25;color:#fff;margin:0 0 16px}.co-contact-modal p,.co-contact-modal li{color:#e5edf5}.co-contact-modal ul{padding-left:22px}.co-contact-modal li{margin:7px 0}.co-contact-renewal{padding:12px;background:#182f43;border-radius:10px}.co-contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.co-contact-button,.co-contact-later{box-sizing:border-box;display:inline-flex;justify-content:center;align-items:center;min-height:46px;padding:10px 18px;border-radius:10px;font:700 15px/1.4 system-ui,sans-serif;cursor:pointer}.co-contact-button{background:#ff6a00;color:#0d1b2a!important;text-decoration:none;border:2px solid #ff6a00}.co-contact-later{background:transparent;color:#fff;border:1px solid #8fa6ba}.co-contact-button:focus-visible,.co-contact-later:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:480px){.co-contact-modal{padding:22px}.co-contact-modal h2{font-size:23px}.co-contact-actions>*{width:100%}.co-contact-card{padding:18px}}
+
+/* Centrado explícito frente a los estilos generales */
+dialog.co-contact-modal[open] {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+}

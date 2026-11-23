@@ -1,0 +1,122 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mi perfil | ConectaObra</title><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="assets/ui.css?v=56"><script src="assets/ui.js?v=56" defer></script></head><body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><img src="assets/logo-symbol.png" alt=""></span><b>CONECTA<span>OBRA</span></b></a><div class="nav-actions"><a class="btn btn-outline-dark" href="panel.html">Mi panel</a><button class="btn btn-outline-dark" data-logout>Salir</button></div></div></header>
+<main class="auth-wrap"><div class="auth-card"><div class="eyebrow">Perfil profesional</div><h1>Tu empresa en ConectaObra</h1><p class="lead">Mantén tu información actualizada para que otras empresas puedan encontrarte.</p><div id="appMsg" hidden></div>
+<form id="profileForm"><div class="form-grid">
+ <div class="field full company-logo-field">
+  <label>Logo de la empresa</label>
+
+  <div class="company-logo-editor">
+    <div class="company-logo-preview">
+      <img id="companyLogoPreview" src="" alt="Logo de la empresa" hidden>
+      <div id="companyLogoPlaceholder" class="company-logo-placeholder">
+        Sin logo
+      </div>
+    </div>
+
+    <div>
+      <input
+        type="file"
+        id="companyLogoInput"
+        accept="image/jpeg,image/png,image/webp"
+      >
+      <p class="form-note">
+        JPG, PNG o WebP. Recomendado: imagen cuadrada.
+      </p>
+    </div>
+  </div>
+</div> 
+<div class="field"><label>Empresa</label><input name="empresa" required></div><div class="field"><label>Persona de contacto</label><input name="contacto" required></div>
+<div class="field"><label>Teléfono</label><input name="telefono" type="tel" inputmode="tel" required></div><div class="field"><label>Provincia</label><select name="provincia" required><option value="">Selecciona</option><option>Álava</option><option>Albacete</option><option>Alicante</option><option>Almería</option><option>Asturias</option><option>Ávila</option><option>Badajoz</option><option>Barcelona</option><option>Bizkaia</option><option>Burgos</option><option>Cáceres</option><option>Cádiz</option><option>Cantabria</option><option>Castellón</option><option>Ceuta</option><option>Ciudad Real</option><option>Córdoba</option><option>Cuenca</option><option>Gipuzkoa</option><option>Girona</option><option>Granada</option><option>Guadalajara</option><option>Huelva</option><option>Huesca</option><option>Illes Balears</option><option>Jaén</option><option>La Coruña</option><option>La Rioja</option><option>Las Palmas</option><option>León</option><option>Lleida</option><option>Lugo</option><option>Madrid</option><option>Málaga</option><option>Melilla</option><option>Murcia</option><option>Navarra</option><option>Ourense</option><option>Palencia</option><option>Pontevedra</option><option>Salamanca</option><option>Santa Cruz de Tenerife</option><option>Segovia</option><option>Sevilla</option><option>Soria</option><option>Tarragona</option><option>Teruel</option><option>Toledo</option><option>Valencia</option><option>Valladolid</option><option>Zamora</option><option>Zaragoza</option></select></div>
+<div class="field"><label>Tipo de empresa</label><input name="tipo" required></div><div class="field"><label>Especialidad</label><input name="especialidad" required></div>
+<div class="field full"><label>Zona de actuación</label><input name="zona"></div><div class="field full"><label>Web</label><input name="web" type="url" placeholder="https://..."></div>
+<div class="field full"><label>Descripción</label><textarea name="descripcion" placeholder="Cuéntanos qué hace tu empresa y qué tipo de colaboraciones buscas."></textarea></div>
+<div class="field full" style="margin-top:20px">
+  <div class="eyebrow">CV Profesional</div>
+  <h2 style="margin:6px 0 8px">Experiencia y capacidad de tu empresa</h2>
+  <p class="form-note" style="margin-bottom:18px">Esta información ayudará a otras empresas a conocer tu experiencia antes de solicitarte presupuesto.</p>
+</div>
+
+<div class="field">
+  <label>Número de empleados</label>
+  <input name="empleados" type="text" placeholder="Ej.: 12 empleados">
+</div>
+
+<div class="field">
+  <label>Años de experiencia</label>
+  <input name="experiencia" type="text" placeholder="Ej.: 15 años">
+</div>
+
+  <div class="field full">
+  <label>Disponibilidad para nuevos trabajos</label>
+  <select name="disponibilidad">
+    <option value="">Selecciona una opción</option>
+    <option value="Disponible">Disponible</option>
+    <option value="Disponibilidad limitada">Disponibilidad limitada</option>
+    <option value="No disponible actualmente">No disponible actualmente</option>
+  </select>
+</div>
+<div class="field full">
+  <label>Trabajos realizados</label>
+  <textarea name="trabajos_realizados" maxlength="10000" placeholder="Ej.: Reforma integral de hotel, estructura de nave industrial, promoción de viviendas..."></textarea>
+</div>
+
+<div class="field full">
+  <label>Certificaciones y acreditaciones</label>
+  <textarea name="certificaciones" maxlength="10000" placeholder="Ej.: REA, ISO 9001, PRL, homologaciones, carnés profesionales..."></textarea>
+</div>
+  <div class="field full">
+  <label>Áreas de experiencia</label>
+  <p class="form-note">Selecciona las áreas en las que trabaja habitualmente tu empresa.</p>
+
+  <div class="areas-grid">
+
+    <label class="area-option">
+      <input type="checkbox" value="Edificación residencial">
+      <span>Edificación residencial</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Naves industriales">
+      <span>Naves industriales</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Obra civil">
+      <span>Obra civil</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Rehabilitación y reformas">
+      <span>Rehabilitación y reformas</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Interiorismo y decoración">
+      <span>Interiorismo y decoración</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Energías renovables">
+      <span>Energías renovables</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Instalaciones">
+      <span>Instalaciones</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Limpieza final de obra">
+      <span>Limpieza final de obra</span>
+    </label>
+
+    <label class="area-option">
+      <input type="checkbox" value="Tratamientos técnicos y seguridad de superficies">
+      <span>Tratamientos técnicos y seguridad de superficies</span>
+    </label>
+
+  </div>
+
+  <input type="hidden" name="areas_experiencia" id="areasExperiencia">
+</div>
+  </div><div class="form-actions sticky-actions"><button class="btn btn-primary" type="submit">Guardar cambios</button></div></form></div></main><script src="assets/app.js?v=56"></script></body></html>

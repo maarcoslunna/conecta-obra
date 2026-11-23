@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Empresas | ConectaObra</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/ui.css?v=56">
+<script src="assets/ui.js?v=56" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"><img src="assets/logo-symbol.png" alt=""></span>
+      <b>CONECTA<span>OBRA</span></b>
+    </a>
+
+    <button class="menu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="como-funciona.html">Cómo funciona</a></li>
+        <li><a href="sectores.html">Sectores</a></li>
+        <li><a class="active" href="directorio.html">Empresas</a></li>
+        <li><a href="planes.html">Planes</a></li>
+        <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="login.html">Acceder</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-primary" href="registro-empresas.html">Crear perfil gratis</a>
+    </div>
+  </div>
+</header>
+
+<main class="dashboard">
+<div class="container">
+  <div class="topbar">
+    <div>
+      <div class="eyebrow">Directorio B2B</div>
+      <h1>Empresas de la red</h1>
+      <p class="lead">Encuentra empresas por especialidad y provincia.</p>
+    </div>
+  </div>
+
+  <div class="notice" data-guest-only style="margin-bottom:16px">
+    <strong>Vista pública del directorio.</strong>
+    Puedes descubrir empresas por especialidad y provincia. Regístrate gratis para acceder a los perfiles completos y conectar con ellas.
+  </div>
+
+  <div class="panel search-panel">
+    <form id="companySearch" class="search-form">
+      <div class="field">
+        <label for="q">Buscar empresa o especialidad</label>
+        <label class="search-main">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="q" placeholder="Empresa, electricidad, climatización..." enterkeyhint="search" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="field" style="min-width:190px">
+        <label for="sector">Sector</label>
+        <select id="sector" name="sector" style="width:100%;min-height:44px;padding:10px;border:1px solid #d8dfe5;border-radius:10px;background:#fff;color:#102132">
+          <option value="">Todos los sectores</option>
+          <option value="construccion">Construcción</option>
+          <option value="energia">Energía</option>
+          <option value="instalaciones">Instalaciones</option>
+          <option value="ingenieria">Ingeniería y servicios</option>
+        </select>
+      </div>
+      <div class="sheet" id="filterSheet" role="dialog" aria-modal="true" aria-labelledby="filterTitle">
+        <div class="sheet-grab"></div>
+        <div class="sheet-head">
+          <h2 id="filterTitle">Filtros</h2>
+          <button type="button" class="sheet-x" data-sheet-close aria-label="Cerrar filtros">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+        <div class="sheet-body">
+          <div class="field">
+            <label for="provincia">Provincia</label>
+            <select id="provincia" name="provincia"><option value="">Todas las provincias</option><option value="Álava">Álava</option><option value="Albacete">Albacete</option><option value="Alicante">Alicante</option><option value="Almería">Almería</option><option value="Asturias">Asturias</option><option value="Ávila">Ávila</option><option value="Badajoz">Badajoz</option><option value="Barcelona">Barcelona</option><option value="Bizkaia">Bizkaia</option><option value="Burgos">Burgos</option><option value="Cáceres">Cáceres</option><option value="Cádiz">Cádiz</option><option value="Cantabria">Cantabria</option><option value="Castellón">Castellón</option><option value="Ceuta">Ceuta</option><option value="Ciudad Real">Ciudad Real</option><option value="Córdoba">Córdoba</option><option value="Cuenca">Cuenca</option><option value="Gipuzkoa">Gipuzkoa</option><option value="Girona">Girona</option><option value="Granada">Granada</option><option value="Guadalajara">Guadalajara</option><option value="Huelva">Huelva</option><option value="Huesca">Huesca</option><option value="Illes Balears">Illes Balears</option><option value="Jaén">Jaén</option><option value="La Coruña">La Coruña</option><option value="La Rioja">La Rioja</option><option value="Las Palmas">Las Palmas</option><option value="León">León</option><option value="Lleida">Lleida</option><option value="Lugo">Lugo</option><option value="Madrid">Madrid</option><option value="Málaga">Málaga</option><option value="Melilla">Melilla</option><option value="Murcia">Murcia</option><option value="Navarra">Navarra</option><option value="Ourense">Ourense</option><option value="Palencia">Palencia</option><option value="Pontevedra">Pontevedra</option><option value="Salamanca">Salamanca</option><option value="Santa Cruz de Tenerife">Santa Cruz de Tenerife</option><option value="Segovia">Segovia</option><option value="Sevilla">Sevilla</option><option value="Soria">Soria</option><option value="Tarragona">Tarragona</option><option value="Teruel">Teruel</option><option value="Toledo">Toledo</option><option value="Valencia">Valencia</option><option value="Valladolid">Valladolid</option><option value="Zamora">Zamora</option><option value="Zaragoza">Zaragoza</option></select>
+          </div>
+        </div>
+        <div class="sheet-foot">
+          <button type="button" class="btn btn-outline-dark" data-filters-clear>Limpiar</button>
+          <button class="btn btn-primary" type="submit">Aplicar filtros</button>
+        </div>
+      </div>
+
+      <div class="search-actions">
+        <button type="button" class="btn btn-outline-dark filter-btn" data-sheet-open="filterSheet" aria-expanded="false" aria-controls="filterSheet">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          Filtros <span class="filter-count" data-filter-count></span>
+        </button>
+        <button class="btn btn-primary btn-search" type="submit">Buscar</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="opps" id="companyList">
+    <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+  </div>
+</div>
+</main>
+
+<script src="assets/app.js?v=57"></script>
+
+<div class="legal-strip">
+  <a href="aviso-legal.html">Aviso legal</a>
+  <a href="privacidad.html">Privacidad</a>
+  <a href="condiciones.html">Condiciones</a>
+  <a href="cookies.html">Cookies</a>
+</div>
+
+</body>
+</html>

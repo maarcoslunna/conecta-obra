@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Verificar licitación | ConectaObra</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f5f7f9;color:#203041;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{background:#203041;color:#fff;padding:25px max(24px,calc((100% - 960px)/2));font-weight:800;letter-spacing:.02em}header span{color:#ff7200}main{max-width:620px;margin:72px auto;padding:0 20px}.panel{background:white;border-radius:15px;padding:36px;box-shadow:0 7px 28px #20304112}h1{font-size:1.65rem;margin:0 0 20px}p{line-height:1.65}#status{padding:16px;border-radius:9px;background:#edf2f7}#status.ok{background:#e7f6eb;color:#146534}#status.error{background:#fff0ed;color:#982d1e}a{color:#df6500;font-weight:600}
+  </style>
+</head>
+<body>
+  <header>CONECTA<span>OBRA</span></header>
+  <main>
+    <section class="panel">
+      <h1>Verificación de correo</h1>
+      <p id="status" role="status" aria-live="polite">Comprobando tu enlace de verificación…</p>
+      <p><a href="publicar-licitacion.html">Volver al formulario de licitaciones</a></p>
+    </section>
+  </main>
+  <script>
+    (async function () {
+      const status = document.getElementById('status');
+      const token = new URLSearchParams(window.location.search).get('token') || '';
+      // Evita dejar el token visible en el historial y en enlaces posteriores.
+      window.history.replaceState(null, '', window.location.pathname);
+      const show = (message, ok) => {
+        status.textContent = message;
+        status.className = ok ? 'ok' : 'error';
+      };
+      if (!/^[a-f0-9]{64}$/.test(token)) {
+        show('El enlace de verificación no es válido o está incompleto.', false);
+        return;
+      }
+      try {
+        const response = await fetch('licitaciones-api.php?action=verificar&token=' + encodeURIComponent(token), {
+          method: 'GET',
+          credentials: 'same-origin',
+          cache: 'no-store',
+          referrerPolicy: 'no-referrer'
+        });
+        const result = await response.json();
+        show(result.message || result.error || 'No se ha podido verificar el correo.', response.ok && result.ok === true);
+      } catch (_) {
+        show('No se pudo comprobar el enlace. Inténtalo de nuevo desde el correo.', false);
+      }
+    })();
+  </script>
+</body>
+</html>

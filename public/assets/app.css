@@ -1,0 +1,37 @@
+/* Extras específicos del área de empresas / directorio.
+   El resto de estilos base (header, footer, formularios, paneles,
+   dashboard, tarjetas de oportunidad, perfil de empresa...) vive en
+   style.css para evitar reglas duplicadas o en conflicto. */
+
+/* Tarjetas de oportunidad con imagen (uso opcional futuro) */
+.card-oportunidad{padding:0 !important;overflow:hidden;}
+.card-img-wrapper{position:relative;width:100%;height:180px;overflow:hidden;background-color:#e2e8f0;}
+.card-img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;}
+.card-oportunidad:hover .card-img{transform:scale(1.05);}
+.card-img-wrapper .tag{position:absolute;top:12px;left:12px;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.card-body-op{padding:20px;display:flex;flex-direction:column;flex-grow:1;justify-content:space-between;}
+.card-header-op{display:flex;justify-content:flex-end;margin-bottom:8px;}
+
+/* Perfil de empresa: pequeños extras */
+.company-card{position:relative;}
+.card-link{display:inline-flex;margin-top:12px;font-weight:800;color:var(--navy);text-decoration:none;transition:color .2s ease;}
+.card-link:hover{color:var(--orange-dark);}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f5f7;padding:2px 5px;border-radius:4px}.admin-table{overflow:auto}.admin-table table{width:100%;border-collapse:collapse}.admin-table th,.admin-table td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.detail-actions{display:flex;gap:8px;flex-wrap:wrap}.detail-actions .btn{margin:0}
+
+/* Planes y facturación */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:35px 0}.pricing-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:18px;padding:28px;box-shadow:0 12px 35px rgba(10,28,48,.07)}.pricing-card.featured{border:2px solid var(--orange)}.pricing-card .tag{position:absolute;right:18px;top:18px}.pricing-card h2{font-size:1.65rem;margin:8px 0}.price{font-size:2.35rem;font-weight:900;color:var(--navy);margin:12px 0}.price small{font-size:.85rem;font-weight:700;color:#6b7280}.annual-note{margin-top:-5px;color:#5b6570;font-weight:700}.pricing-card .checklist{min-height:145px;margin:20px 0}.pricing-card .btn{margin-top:9px}.center{text-align:center}.billing-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.pricing-card .checklist{min-height:auto}}
+
+
+/* WhatsApp footer CTA */
+.footer-whatsapp{display:inline-flex;align-items:center;gap:7px;margin-left:10px;padding:8px 12px;border:1px solid rgba(255,255,255,.2);border-radius:8px;text-decoration:none;color:#fff;font-weight:700;font-size:13px;background:rgba(255,255,255,.04)}
+.footer-whatsapp:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.35);}
+
+/* LinkedIn social icon */
+.linkedin-icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;vertical-align:middle;text-decoration:none}
+.linkedin-icon svg{width:24px;height:24px;display:block}
+.linkedin-icon svg rect{fill:currentColor}
+.linkedin-icon svg path{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.linkedin-icon-lg{width:44px;height:44px}
+.linkedin-icon-lg svg{width:36px;height:36px}

@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+:root{font-family:Arial,sans-serif;color:#17304b;background:#f4f7fb}*{box-sizing:border-box}.empresas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.empresa-card{background:white;border:1px solid #dce4ee;border-radius:14px;padding:18px;cursor:pointer;box-shadow:0 3px 12px #142b4510}.empresa-card:hover{border-color:#ff7900;transform:translateY(-2px)}.empresa-card h3{margin:0 0 10px}.empresa-detalle{position:fixed;right:0;top:0;height:100vh;width:min(480px,100%);background:white;box-shadow:-8px 0 30px #142b4526;overflow:auto;padding:28px;z-index:100}.empresa-buscador{width:100%;padding:13px;border:1px solid #dce4ee;border-radius:10px;margin-bottom:18px}.empresa-filtros{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}.empresa-filtros button{padding:10px 16px;border:1px solid #dce4ee;border-radius:9px;background:white;cursor:pointer}@media(max-width:600px){.empresas-grid{grid-template-columns:1fr}}
+/* AJUSTE_PANEL_LATERAL_V1 */
+body:has(.empresa-detalle:not([hidden])) main{margin-right:500px!important;max-width:none!important;transition:margin-right .2s ease}
+.empresa-card{text-align:left;font:inherit;min-height:130px;transition:border-color .2s,transform .2s}
+.empresa-card:focus-visible{outline:3px solid #ff7900;outline-offset:2px}
+.empresa-detalle{border-left:4px solid #ff7900}
+.empresa-detalle>button:first-child{background:#17304b;color:white;border:0;border-radius:9px;padding:11px 16px;cursor:pointer;margin-bottom:18px}
+@media(max-width:900px){body:has(.empresa-detalle:not([hidden])) main{margin-right:20px!important}}
+
+/* CORRECCION_LATERAL_V2 */
+@media(min-width:901px){body:has(#detalle:not([hidden])) main{width:calc(100% - 520px)!important;max-width:none!important;margin:40px 0!important;padding:20px 28px!important}body:has(#detalle:not([hidden])) .empresas-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important}}
+@media(max-width:900px){#detalle:not([hidden]){width:min(480px,100%)}}
+
+/* IDENTIDAD_CONECTAOBRA_V1 */
+:root{color:#f8fafc;background:#0b1b2c;font-family:Arial,sans-serif}
+body{background:linear-gradient(135deg,#101a29,#0b1b2c 65%,#14283d);color:#f8fafc;min-height:100vh;margin:0}
+main h1{color:#fff;font-weight:800}
+main>p{color:#b9c7d7}
+.cabecera-conectaobra{border-bottom:1px solid #304154;padding-bottom:22px}
+.cabecera-conectaobra div div:first-child{color:#fff!important}
+.cabecera-conectaobra div div:last-child{color:#b9c7d7!important}
+.empresa-buscador{background:#14283d;color:#fff;border:1px solid #40546a}
+.empresa-buscador::placeholder{color:#b9c7d7}
+.empresa-filtros button{background:#14283d;color:#fff;border:1px solid #40546a;font-weight:700}
+.empresa-filtros button:hover,.empresa-filtros button:focus-visible{background:#ff7900;color:#fff;border-color:#ff7900}
+.empresa-card{background:#14283d;color:#fff;border:1px solid #344b63;box-shadow:0 6px 18px #0003}
+.empresa-card:hover{border-color:#ff7900;box-shadow:0 8px 22px #ff790022}
+.empresa-card h3{color:#fff}
+.empresa-card small{color:#ff9a55;font-weight:700}
+.empresa-detalle{background:#102238;color:#fff;border-left:4px solid #ff7900}
+.empresa-detalle h2{color:#fff}
+.empresa-detalle>button:first-child{background:#ff7900;color:#fff;font-weight:700}
+
+
+/* CENTRO_CONTROL_V1 */
+.co-admin-nav {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:18px 0 24px;
+}
+.co-admin-nav a {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 16px;
+  border:1px solid #35506a;
+  border-radius:10px;
+  background:#14283d;
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
+.co-admin-nav a:hover,
+.co-admin-nav a.activo {
+  background:#ff7900;
+  border-color:#ff7900;
+  color:#fff;
+}
+@media(max-width:600px) {
+  .co-admin-nav {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .co-admin-nav a {
+    padding:12px 8px;
+    font-size:12px;
+  }
+}
+
+/* OPORTUNIDADES_V1 */
+.co-oportunidades {
+  padding:24px;
+  background:#0b1b2c;
+  color:#fff;
+  border-radius:16px;
+  margin:20px 0;
+}
+.co-oportunidades h2 { color:#ff7900; }
+.co-oportunidades input {
+  width:100%;
+  max-width:480px;
+  padding:13px;
+  margin:12px 0 20px;
+  border:1px solid #35506a;
+  border-radius:10px;
+}
+.co-op-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
+}
+.co-op-card {
+  padding:18px;
+  background:#14283d;
+  border:1px solid #35506a;
+  border-radius:12px;
+}
+.co-op-card strong { color:#ff7900; }
+
+/* MODULOS_ADMIN_V2 */
+.co-modulo {
+  padding:24px;
+  margin:20px 0;
+  border-radius:16px;
+  background:#0b1b2c;
+  color:#fff;
+}
+.co-modulo h2 { color:#ff7900; }
+.co-modulo input {
+  display:block;
+  width:100%;
+  max-width:480px;
+  padding:13px;
+  margin:14px 0 20px;
+  border:1px solid #35506a;
+  border-radius:10px;
+}
+.co-modulo-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
+}
+.co-modulo-card {
+  padding:18px;
+  border-radius:12px;
+  border:1px solid #35506a;
+  background:#14283d;
+}
+.co-modulo-card strong { color:#ff7900; }
+.co-modulo-card p { overflow-wrap:anywhere; }
+
+/* Respetar visibilidad de secciones */
+[hidden] { display:none !important; }
+
+/* CONECTAJOB_V1 */
+.co-job-card {
+  max-width:650px;
+  padding:24px;
+  background:#14283d;
+  border:1px solid #35506a;
+  border-radius:14px;
+}
+.co-job-card h3 { color:#ff7900; }
+.co-job-btn {
+  display:inline-block;
+  margin-top:15px;
+  padding:13px 20px;
+  background:#ff7900;
+  color:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+}
+.co-job-btn:hover { background:#e66c00; }
+
+
+/* CONECTAJOB_DATOS_V1 */
+.co-job-toolbar {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:20px 0;
+}
+.co-job-toolbar input {
+  flex:1;
+  min-width:220px;
+  padding:12px;
+  border-radius:9px;
+  border:1px solid #506176;
+}
+.co-job-toolbar button {
+  padding:12px 20px;
+  border:0;
+  border-radius:9px;
+  background:#ff7900;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+.co-job-lista {
+  display:grid;
+  gap:14px;
+}
+.co-job-oferta {
+  background:#14283d;
+  border:1px solid #35506a;
+  border-radius:12px;
+  padding:18px;
+}
+.co-job-oferta h3 {
+  color:#ff7900;
+  margin:0 0 10px;
+}
+.co-job-estado {
+  display:inline-block;
+  margin-top:8px;
+  font-size:13px;
+}
+.co-job-ayuda {
+  margin-top:22px;
+}
+.co-job-ayuda a {
+  color:#ff7900;
+}
+
+
+/* CENTRO_AUTOMATIZACIONES_V1 */
+#co-automatizaciones[hidden] {
+  display: none !important;
+}
+
+.co-auto-panel {
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  margin: 20px 0;
+  color: #0b1b2c;
+}
+
+#co-auto-resumen p {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+#co-auto-actualizar {
+  background: #ff7900;
+  color: white;
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+/* CO_ADMIN_MARCA_COMPARTIDA */
+body.co-admin-brand {
+  --co-bg: #0d1b2a;
+  --co-surface: #122437;
+  --co-raised: #182d42;
+  --co-line: #35516a;
+  --co-text: #f8fafc;
+  --co-secondary: #bdcad8;
+  --co-brand: linear-gradient(135deg, #ff7a1a, #f05a00);
+  --co-brand-hover: linear-gradient(135deg, #ff8a33, #e05f00);
+  color: var(--co-text);
+  color-scheme: dark;
+  background: radial-gradient(ellipse at top left, #ff6a0020, transparent 34rem),
+              var(--co-bg) !important;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+}
+body.co-admin-brand :is(h1,h2,h3) {
+  color: var(--co-text);
+  font-family: inherit !important;
+}
+body.co-admin-brand .co-admin-nav {
+  background: var(--co-surface) !important;
+  border: 1px solid var(--co-line);
+}
+body.co-admin-brand .co-admin-nav a {
+  background: var(--co-raised) !important;
+  color: var(--co-text) !important;
+}
+body.co-admin-brand .co-admin-nav a:hover { border-color: #ff9b52 !important; }
+body.co-admin-brand .co-admin-nav a:is(.activo,[aria-current="page"]) {
+  background: var(--co-brand) !important;
+  border-color: #ff7a1a !important;
+}
+body.co-admin-brand :is(.co-modulo,.co-oportunidades,.co-auto-panel,
+                         #co-actividad-comercial,#co-admin-selector-comercial) {
+  background: var(--co-surface) !important;
+  color: var(--co-text) !important;
+  border: 1px solid var(--co-line) !important;
+  border-radius: 16px;
+}
+body.co-admin-brand :is(.co-modulo-card,.co-op-card,.co-job-card,.empresa-card,.empresa-detalle) {
+  background: var(--co-raised);
+  color: var(--co-text);
+  border-color: var(--co-line);
+}
+body.co-admin-brand .empresa-detalle { border-left-color: #ff7a1a; }
+body.co-admin-brand :is(.co-modulo-card,.co-op-card,.co-job-card) strong { color: #ffab70; }
+body.co-admin-brand :is(.co-modulo,.co-oportunidades,.co-auto-panel,
+                         #co-actividad-comercial,#co-publicas-supervision) a:not(.btn) {
+  color: #ffab70;
+  text-underline-offset: 3px;
+}
+body.co-admin-brand :is(input:not([type]), input:is([type="text"],[type="email"],[type="tel"],
+                       [type="search"],[type="number"],[type="date"],[type="url"],[type="password"]),
+                       select, textarea) {
+  min-height: 42px;
+  padding: 9px 12px;
+  background: var(--co-bg);
+  border: 1px solid var(--co-line);
+  color: var(--co-text);
+  font: inherit;
+  box-sizing: border-box;
+}
+body.co-admin-brand :is(input,textarea)::placeholder { color: var(--co-secondary); }
+body.co-admin-brand button:not(.empresa-card):not(.co-admin-danger),
+body.co-admin-brand .co-job-btn {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid transparent;
+  background: var(--co-brand);
+  color: #fff;
+  font-size: .875rem;
+  cursor: pointer;
+}
+body.co-admin-brand button:not(.empresa-card):not(.co-admin-danger):hover:not(:disabled),
+body.co-admin-brand .co-job-btn:hover { background: var(--co-brand-hover); }
+body.co-admin-brand button.co-admin-danger {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid #b96a71;
+  background: transparent;
+  color: #ffb8be;
+  cursor: pointer;
+}
+body.co-admin-brand button.co-admin-danger:hover:not(:disabled) { background: #512a37; }
+body.co-admin-brand button:disabled { opacity: .55; cursor: not-allowed; }
+body.co-admin-brand #co-freelance-alta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 12px;
+  align-items: end;
+}
+body.co-admin-brand #co-freelance-alta label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+body.co-admin-brand #co-freelance-alta input { width: 100%; }
+body.co-admin-brand .co-admin-contacto { color: var(--co-secondary); overflow-wrap: anywhere; }

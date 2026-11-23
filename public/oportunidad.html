@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Oportunidad | ConectaObra</title>
+  <meta name="description" content="Detalle de oportunidad comercial en ConectaObra.">
+
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="assets/ui.css?v=56">
+<script src="assets/ui.js?v=56" defer></script><link rel="stylesheet" href="assets/conexiones-intereses-v1.css?v=1"></head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true"><img src="assets/logo-symbol.png" alt=""></span>
+      <b>CONECTA<span>OBRA</span></b>
+    </a>
+
+    <div class="nav-actions">
+      <a class="btn btn-outline-dark" href="oportunidades.html">
+        ← Volver a oportunidades
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<main class="opportunity-detail">
+
+  <div class="container">
+
+    <div id="loading" class="loading">
+      Cargando oportunidad...
+    </div>
+
+    <div id="error" class="error-box panel" hidden>
+      <div class="eyebrow">Oportunidad</div>
+      <h1>No se ha podido cargar</h1>
+      <p id="errorText"></p>
+
+      <div class="form-actions" style="margin-top:20px">
+        <a class="btn btn-primary" href="oportunidades.html">
+          Volver a oportunidades
+        </a>
+      </div>
+    </div>
+
+    <article id="detail" class="detail-card" hidden>
+
+      <div class="eyebrow">Oportunidad comercial</div>
+
+      <span id="category" class="badge"></span>
+
+      <h1 id="title"></h1>
+
+      <div class="detail-meta">
+        <span id="province"></span>
+        <span>·</span>
+        <span id="date"></span>
+      </div>
+
+      <section class="detail-description">
+        <h2>Descripción de la oportunidad</h2>
+        <p id="description"></p>
+      </section>
+
+      <section class="company-box">
+
+        <h2>Empresa que publica</h2>
+
+        <div class="company-data">
+
+          <p>
+            <a id="companyLink" class="company-name-link" href="#"><strong id="company"></strong></a>
+          </p>
+
+          <p id="companyInfo"></p>
+
+          <p id="specialty"></p>
+
+        </div>
+
+      </section>
+
+      <div class="detail-actions">
+
+        <a id="contactButton"
+           class="btn btn-primary"
+           href="contacto.html">
+          Solicitar contacto
+        </a>
+
+        <a id="webButton"
+           class="btn btn-outline-dark"
+           href="#"
+           target="_blank"
+           rel="noopener"
+           hidden>
+          Visitar web
+        </a>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-social"><strong>Síguenos</strong><a class="linkedin-icon" href="https://www.linkedin.com/in/marco-luna-a40a56424/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Marco Luna ConectaObra" title="LinkedIn de Marco Luna ConectaObra"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="1" width="22" height="22" rx="4"></rect><path d="M7 9.5V17M7 7.2v.1M11 17v-4.1c0-1.6.8-2.6 2.2-2.6 1.4 0 2.2 1 2.2 2.6V17M11 10.5v6.5"></path></svg></a></div>
+<div class="footer-bottom">
+      <span>
+        © <span data-year></span> ConectaObra. Todos los derechos reservados.
+      </span>
+
+      <span>
+        info@conectaobra10.es · Sevilla, España 
+      </span>
+    </div>
+
+  </div>
+
+ <a class="footer-whatsapp" href="https://wa.me/34694209313?text=Hola%20ConectaObra%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20la%20plataforma." target="_blank" rel="noopener" aria-label="WhatsApp · Contactar">💬 WhatsApp · Contactar</a></footer>
+
+<script>
+(() => {
+
+  const API = 'api.php';
+
+  const loading = document.getElementById('loading');
+  const error = document.getElementById('error');
+  const errorText = document.getElementById('errorText');
+  const detail = document.getElementById('detail');
+
+  function esc(value) {
+    return String(value ?? '').replace(/[&<>"']/g, m => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[m]));
+  }
+
+  async function loadOpportunity() {
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id || !/^\d+$/.test(id)) {
+      showError('La oportunidad indicada no es válida.');
+      return;
+    }
+
+    try {
+
+      const response = await fetch(
+        `${API}?action=opportunity&id=${encodeURIComponent(id)}`,
+        {
+          method: 'GET',
+          cache: 'no-store'
+        }
+      );
+
+      const data = await response.json();
+
+      if (!data.ok || !data.opportunity) {
+        showError(data.error || 'No se ha encontrado la oportunidad.');
+        return;
+      }
+
+      render(data.opportunity);
+
+    } catch (e) {
+
+      showError(
+        'No se ha podido conectar con el servidor. Inténtalo de nuevo.'
+      );
+
+    }
+
+  }
+
+  function render(o) {
+
+    document.title = `${o.title} | ConectaObra`;
+
+    document.getElementById('category').textContent =
+      o.category || 'Oportunidad';
+
+    document.getElementById('title').textContent =
+      o.title || '';
+
+    document.getElementById('province').textContent =
+      `📍 ${o.province || ''}`;
+
+    document.getElementById('date').textContent =
+      o.created_at
+        ? `Publicada ${window.coDate ? window.coDate(o.created_at) : o.created_at}`
+        : '';
+
+    document.getElementById('description').textContent =
+      o.description || '';
+
+    document.getElementById('company').textContent =
+      o.empresa || '';
+
+    document.getElementById('companyInfo').textContent =
+      `📍 ${o.company_province || o.province || ''} · ${o.tipo || ''}`;
+
+    document.getElementById('specialty').textContent =
+      o.especialidad
+        ? `🔧 Especialidad: ${o.especialidad}`
+        : '';
+
+    const contactButton = document.getElementById('contactButton');
+    if (contactButton) {
+      const params = new URLSearchParams();
+      params.set('empresa', o.empresa || '');
+      params.set('oportunidad', o.title || '');
+      contactButton.href = `contacto.html?${params.toString()}`;
+    }
+
+    const webButton = document.getElementById('webButton');
+
+    if (o.web) {
+
+      let web = o.web.trim();
+
+      if (!/^https?:\/\//i.test(web)) {
+        web = 'https://' + web;
+      }
+
+      webButton.href = web;
+      webButton.hidden = false;
+
+    }
+
+    loading.hidden = true;
+    detail.hidden = false;
+
+  }
+
+  function showError(message) {
+
+    loading.hidden = true;
+    detail.hidden = true;
+
+    errorText.textContent = message;
+    error.hidden = false;
+
+  }
+
+  const year = document.querySelector('[data-year]');
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+  loadOpportunity();
+
+})();
+</script>
+
+<div class="legal-strip"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="condiciones.html">Condiciones</a><a href="cookies.html">Cookies</a></div><script src="assets/conexiones-intereses-v1.js?v=2" defer></script></body>
+</html>

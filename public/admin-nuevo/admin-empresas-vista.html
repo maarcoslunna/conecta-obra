@@ -1,0 +1,731 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Empresas | ConectaObra</title><link rel="stylesheet" href="admin-empresas.css?v=marca-1"><script src="admin-acceso.js" defer></script>
+
+<!-- CO_ADMIN_BRAND_DESIGN_V1 -->
+<style>
+:root {
+  --co-navy:#102235;
+  --co-navy-deep:#0b1929;
+  --co-blue:#203d58;
+  --co-orange:#ff6900;
+  --co-ink:#14283b;
+  --co-muted:#aebdcb;
+  --co-radius:16px;
+}
+body {
+  font-family:Inter,Montserrat,"Segoe UI",Arial,sans-serif!important;
+  background:#0b1929!important;
+  color:#fff;
+  line-height:1.5;
+}
+h1,h2,h3 {
+  font-family:Inter,Montserrat,"Segoe UI",Arial,sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:-.035em;
+}
+h1 {letter-spacing:-.045em}
+a,button,input,select,textarea {font-family:inherit}
+button,.btn,[type="submit"] {
+  border-radius:11px!important;
+  font-weight:750!important;
+  transition:transform .18s,box-shadow .18s,background .18s;
+}
+button:hover,.btn:hover,[type="submit"]:hover {
+  transform:translateY(-2px);
+  box-shadow:0 7px 20px rgba(0,0,0,.16);
+}
+button:focus-visible,a:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible {
+  outline:3px solid #ff9b52!important;
+  outline-offset:3px;
+}
+.co-admin-nav {
+  display:flex!important;
+  flex-wrap:wrap;
+  gap:9px!important;
+  padding:14px 18px!important;
+  background:#102235!important;
+  border-radius:15px!important;
+  margin:18px 0!important;
+}
+.co-admin-nav a {
+  color:#e8eff5!important;
+  text-decoration:none!important;
+  border:1px solid #35516a!important;
+  background:#203d58!important;
+  border-radius:11px!important;
+  padding:11px 16px!important;
+  font-weight:750!important;
+  transition:background .2s,transform .2s;
+}
+.co-admin-nav a:hover {
+  background:#345775!important;
+  transform:translateY(-2px);
+}
+.co-admin-nav a.activo,
+.co-admin-nav a[aria-current="page"] {
+  background:#ff6900!important;
+  border-color:#ff6900!important;
+  color:#fff!important;
+}
+#co-publicas-supervision,
+#co-admin-publicas-card {
+  background:linear-gradient(125deg,#102235,#203d58)!important;
+  border:1px solid #36516a!important;
+  border-radius:18px!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+  padding:24px!important;
+}
+#co-publicas-supervision h2 {
+  font-size:1.5rem!important;
+  letter-spacing:-.035em;
+}
+#co-publicas-supervision a {
+  color:#ffab70!important;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+input:not([type="checkbox"]):not([type="radio"]),
+select,textarea {
+  border-radius:10px!important;
+  max-width:100%;
+}
+table {border-collapse:separate;border-spacing:0}
+th {font-weight:750;letter-spacing:.01em}
+@media(max-width:700px) {
+  .co-admin-nav {padding:12px!important}
+  .co-admin-nav a {flex:1 1 140px;text-align:center}
+  #co-publicas-supervision {padding:18px!important}
+  h1 {font-size:1.7rem!important}
+}
+@media(prefers-reduced-motion:reduce) {
+  button,.btn,.co-admin-nav a {transition:none!important}
+}
+</style>
+</head><body class="co-admin-brand">
+
+
+<!-- CO_ADMIN_UI_CLEANUP_V1 -->
+<header class="co-mando" style="background:#10243a;color:#fff;padding:20px 24px">
+  <h1 style="font-size:23px;margin:0;color:#fff">
+    Centro de mando · ConectaObra
+  </h1>
+  <p style="margin:7px 0 0;color:#c8d8e6">
+    Administración general de empresas, oportunidades,
+    comerciales, empleo y actividad de la plataforma.
+  </p>
+</header>
+
+
+<!-- CENTRO_CONTROL_V1 -->
+
+<!-- CO_ADMIN_RESUMEN_V1 -->
+
+<!-- CO_ADMIN_KPIS_V1 -->
+<div id="co-kpis-comerciales" style="display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;margin:15px 0">
+ <div style="padding:16px;background:#20415e;border-radius:9px">
+  <strong>Comerciales registrados</strong>
+  <p id="co-kpi-agentes">Cargando…</p>
+ </div>
+ <div style="padding:16px;background:#20415e;border-radius:9px">
+  <strong>Clientes potenciales de comerciales</strong>
+  <p id="co-kpi-leads">Cargando…</p>
+ </div>
+ <div style="padding:16px;background:#20415e;border-radius:9px">
+  <strong>Comisiones pendientes</strong>
+  <p id="co-kpi-pendiente">Cargando…</p>
+ </div>
+</div>
+<script>
+(async () => {
+  const ids = ['co-kpi-agentes','co-kpi-leads','co-kpi-pendiente'];
+  try {
+    const r = await fetch('/admin-nuevo/comerciales-api.php',
+      {credentials:'same-origin',cache:'no-store'});
+    const d = await r.json();
+    if (!r.ok || !d.ok || !d.kpis) throw Error();
+    document.getElementById(ids[0]).textContent = d.kpis.agentes;
+    document.getElementById(ids[1]).textContent = d.kpis.oportunidades;
+    document.getElementById(ids[2]).textContent =
+      (d.kpis.pendiente_cents/100).toLocaleString('es-ES',
+        {style:'currency',currency:'EUR'});
+  } catch(e) {
+    ids.forEach(id => {
+      document.getElementById(id).textContent = 'No disponible';
+    });
+  }
+})();
+</script>
+
+<section id="co-resumen-general"
+ style="max-width:1400px;margin:20px auto;padding:22px;
+ background:#132b43;color:white;border-radius:12px">
+ <h2 style="color:white;margin-top:0">Resumen general de ConectaObra</h2>
+ <p>Centro de supervisión de la actividad de la plataforma.</p>
+ <div style="display:grid;grid-template-columns:
+ repeat(auto-fit,minmax(190px,1fr));gap:14px">
+  <div style="padding:18px;background:#20415e;border-radius:10px">
+   <strong>Empresas</strong>
+   <p>Consulta el módulo de empresas</p>
+  </div>
+  <div style="padding:18px;background:#20415e;border-radius:10px">
+   <strong>Licitaciones</strong>
+   <p>Gestión y seguimiento</p>
+  </div>
+  <div style="padding:18px;background:#20415e;border-radius:10px">
+   <strong>Empleo</strong>
+   <p>Ofertas y actividad</p>
+  </div>
+  <div style="padding:18px;background:#20415e;border-radius:10px">
+   <strong>Comerciales</strong>
+   <p>Agentes, gestiones y comisiones</p>
+  </div>
+  <div style="padding:18px;background:#20415e;border-radius:10px">
+   <strong>Facturación</strong>
+   <p>Suscripciones y cobros</p>
+  </div>
+ </div>
+</section>
+
+
+<!-- CO_ADMIN_PUBLICAS_CARD_V2 -->
+<section id="co-publicas-supervision" style="margin:18px 0;padding:20px;background:#102d46;color:#fff;border-radius:14px">
+  <h2 style="margin:0 0 12px;color:#fff">Licitaciones públicas · Supervisión</h2>
+  <div id="co-publicas-estado">Consultando datos...</div>
+  <a href="/licitaciones-publicas/" target="_blank" rel="noopener"
+     style="display:inline-block;margin-top:12px;color:#9bd8ff;font-weight:700">
+    Consultar licitaciones públicas
+  </a>
+</section>
+<script>
+(function(){
+  var el=document.getElementById('co-publicas-estado');
+  if(!el)return;
+  fetch('/admin-nuevo/comerciales-api.php?publicas_estado=1',
+    {credentials:'same-origin',cache:'no-store'})
+  .then(function(r){if(!r.ok)throw Error('HTTP '+r.status);return r.json();})
+  .then(function(d){
+    if(!d.ok)throw Error('Sin datos');
+    var fecha=d.ultimo_checkpoint
+      ? new Date(d.ultimo_checkpoint).toLocaleString('es-ES')
+      : 'Sin registro';
+    el.textContent='Abiertas: '+Number(d.abiertas).toLocaleString('es-ES')
+      +' · Total almacenadas: '+Number(d.total).toLocaleString('es-ES')
+      +' · Último checkpoint: '+fecha;
+  })
+  .catch(function(){
+    el.textContent='Estado no disponible. Revisar conexión o permisos.';
+  });
+})();
+</script>
+<nav class="co-admin-nav" aria-label="Administración ConectaObra">
+  <a class="activo" href="/admin-nuevo/">Empresas</a>
+  <a href="#co-invitaciones" title="Gestión de invitaciones">Invitaciones</a>
+  <a href="#co-oportunidades" title="Gestión de oportunidades">Oportunidades</a>
+  <a href="#co-mediaciones" title="Gestión de mediaciones">Mediaciones</a>
+  <a href="#co-comerciales">Comerciales</a>
+<a href="#co-automatizaciones">Automatizaciones</a>
+<a href="#co-conectajob" title="Ofertas de empleo">ConectaJob</a>
+  <a href="/directorio.html">Directorio</a>
+  <a href="/licitaciones-privadas/admin-licitaciones.php">Licitaciones privadas</a>
+</nav>
+<main style="max-width:1400px;margin:40px auto;padding:20px"><header class="cabecera-conectaobra" style="display:flex;align-items:center;gap:16px;margin-bottom:26px"><img src="assets/logo-symbol.png" alt="Logo de ConectaObra" style="width:64px;height:64px;object-fit:contain"><div><div style="font-size:24px;font-weight:800;color:#17304b">ConectaObra</div><div style="font-size:14px;color:#64748b">Panel de administración</div></div></header><h1>Empresas de ConectaObra</h1><p>Panel de empresas · Cuadricula de empresas</p><input id="buscar" class="empresa-buscador" placeholder="Buscar empresa, provincia o especialidad"><div class="empresa-filtros"><button data-filtro="todas">Todas</button><button data-filtro="registradas">Registradas</button><button data-filtro="invitadas">Invitadas</button></div><div id="empresas" class="empresas-grid"></div>
+
+
+
+
+
+</main>
+
+<!-- MODULOS_COMERCIALES_AUTOMATIZACIONES -->
+
+
+
+<section id="co-comerciales" hidden>
+<!-- CO_ADMIN_SALES_DETAIL_V1 -->
+<section id="co-actividad-comercial" style="max-width:1300px;margin:25px auto;padding:20px" hidden>
+<h2>Actividad del comercial</h2>
+<p id="co-actividad-estado"></p>
+<div id="co-actividad-contenido"></div>
+</section>
+<script>
+(() => {
+  const section = document.getElementById('co-actividad-comercial');
+  const estado = document.getElementById('co-actividad-estado');
+  const contenido = document.getElementById('co-actividad-contenido');
+
+  function celda(tr, valor) {
+    const td = document.createElement('td');
+    td.textContent = String(valor ?? '—');
+    td.style.padding = '9px';
+    td.style.borderBottom = '1px solid #ddd';
+    tr.appendChild(td);
+  }
+
+  function tabla(titulo, filas, columnas) {
+    const h = document.createElement('h3');
+    h.textContent = titulo;
+    contenido.appendChild(h);
+    if (!filas.length) {
+      const p = document.createElement('p');
+      p.textContent = 'Sin registros';
+      contenido.appendChild(p);
+      return;
+    }
+    const t = document.createElement('table');
+    t.style.width = '100%';
+    t.style.borderCollapse = 'collapse';
+    const cab = document.createElement('tr');
+    columnas.forEach(([titulo]) => celda(cab, titulo));
+    t.appendChild(cab);
+    filas.forEach(f => {
+      const tr = document.createElement('tr');
+      columnas.forEach(([,campo]) => celda(tr, f[campo]));
+      t.appendChild(tr);
+    });
+    contenido.appendChild(t);
+  }
+
+  async function abrir(id, mensaje = '') {
+    section.hidden = false;
+    contenido.replaceChildren();
+    estado.textContent = 'Cargando actividad…';
+    section.scrollIntoView({behavior:'smooth'});
+    try {
+      const r = await fetch(
+        '/admin-nuevo/comerciales-api.php?agent_id=' + encodeURIComponent(id),
+        {credentials:'same-origin',cache:'no-store'}
+      );
+      const d = await r.json();
+      if (!r.ok || !d.ok) throw Error(d.error || 'Consulta fallida');
+      const a = d.agente;
+      const contactoComercial = document.createElement('p');
+      contactoComercial.className = 'co-admin-contacto';
+      contactoComercial.textContent =
+        'Correo: ' + (a.email || 'Sin correo') + ' · Teléfono: ' + (a.phone || 'Sin teléfono');
+      contenido.appendChild(contactoComercial);
+      contenido.append(coDocumentosComercial(a.id));
+
+      if (a.account_status === 'pending') {
+        const invitar = document.createElement('button');
+        invitar.type = 'button';
+        invitar.textContent = 'Generar enlace de activación';
+        const avisoInvitacion = document.createElement('p');
+        avisoInvitacion.setAttribute('role', 'status');
+        const enlaceInvitacion = document.createElement('input');
+        enlaceInvitacion.type = 'text';
+        enlaceInvitacion.readOnly = true;
+        enlaceInvitacion.hidden = true;
+        enlaceInvitacion.setAttribute('aria-label', 'Enlace de activación del comercial');
+        enlaceInvitacion.style.cssText = 'display:block;box-sizing:border-box;max-width:100%;width:100%;font-size:16px;margin:12px 0';
+        enlaceInvitacion.style.display = 'none';
+        enlaceInvitacion.addEventListener('click', () => enlaceInvitacion.select());
+        contenido.append(invitar, avisoInvitacion, enlaceInvitacion);
+
+        invitar.addEventListener('click', async () => {
+          invitar.disabled = true;
+          avisoInvitacion.textContent = 'Generando invitación…';
+          enlaceInvitacion.value = '';
+          enlaceInvitacion.hidden = true;
+          enlaceInvitacion.style.display = 'none';
+          try {
+            const respuesta = await fetch('/admin-nuevo/comerciales-gestion-api.php', {
+              method: 'POST',
+              credentials: 'same-origin',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': await obtenerTokenComercial()
+              },
+              body: JSON.stringify({
+                action: 'sales_account_invitation',
+                agent_id: String(a.id)
+              })
+            });
+            const resultado = await respuesta.json();
+            if (!respuesta.ok || !resultado.ok) {
+              throw new Error(resultado.error || 'No se pudo generar la invitación.');
+            }
+            enlaceInvitacion.value = resultado.activation_url;
+            enlaceInvitacion.hidden = false;
+            enlaceInvitacion.style.display = 'block';
+            avisoInvitacion.textContent = resultado.message + ' Pulsa el campo para seleccionar y copiar el enlace.';
+          } catch (error) {
+            avisoInvitacion.textContent = error.message;
+          } finally {
+            invitar.disabled = false;
+          }
+        });
+      }
+      const eliminar = document.createElement('button');
+      eliminar.type = 'button';
+      eliminar.textContent = 'Eliminar comercial';
+      eliminar.className = 'btn co-admin-danger';
+      const avisoEliminar = document.createElement('p');
+      avisoEliminar.setAttribute('role', 'status');
+      contenido.append(eliminar, avisoEliminar);
+
+      eliminar.addEventListener('click', async () => {
+        const nombre = a.full_name || 'Comercial #' + a.id;
+        if (!window.confirm('¿Eliminar a ' + nombre + ' y su cuenta de acceso?')) return;
+        eliminar.disabled = true;
+        avisoEliminar.textContent = 'Eliminando comercial…';
+        try {
+          const respuesta = await fetch('/admin-nuevo/comerciales-gestion-api.php', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': await obtenerTokenComercial()
+            },
+            body: JSON.stringify({action:'sales_agent_delete', agent_id:String(a.id)})
+          });
+          const resultado = await respuesta.json();
+          if (!respuesta.ok || !resultado.ok) {
+            throw new Error(resultado.error || 'No se pudo eliminar el comercial');
+          }
+          window.location.reload();
+        } catch (error) {
+          avisoEliminar.textContent = error.message;
+          eliminar.disabled = false;
+        }
+      });
+      estado.textContent =
+        (a.full_name || 'Comercial #' + a.id) +
+        ' · ' + a.territory +
+        ' · Estado: ' + a.status +
+        ' · Cuenta: ' + (a.account_status || 'Sin cuenta');
+      if (mensaje) {
+        const confirmacion = document.createElement('p');
+        confirmacion.setAttribute('role', 'status');
+        confirmacion.textContent = mensaje;
+        contenido.appendChild(confirmacion);
+      }
+      const total = document.createElement('p');
+      total.textContent = 'Comisiones pendientes: ' +
+        (d.pendiente_cents / 100).toLocaleString('es-ES',
+          {style:'currency',currency:'EUR'});
+      contenido.appendChild(total);
+      const form = document.createElement('form');
+      const etiqueta = document.createElement('label');
+      etiqueta.textContent = 'Empresa registrada ';
+      const empresa = document.createElement('select');
+      empresa.required = true;
+      empresa.append(new Option('Selecciona una empresa', ''));
+      etiqueta.appendChild(empresa);
+      const asignar = document.createElement('button');
+      asignar.type = 'submit';
+      asignar.textContent = 'Asignar empresa';
+      asignar.disabled = true;
+      const aviso = document.createElement('p');
+      aviso.setAttribute('role', 'status');
+      aviso.textContent = 'Cargando empresas…';
+      form.append(etiqueta, asignar, aviso);
+      contenido.appendChild(form);
+
+      fetch('/api.php?action=admin_companies', {
+        credentials:'same-origin', cache:'no-store'
+      }).then(async respuesta => {
+        const datos = await respuesta.json();
+        if (!respuesta.ok || !datos.ok) throw Error('No se pudo cargar la lista de empresas');
+        for (const ficha of datos.companies || []) {
+          const companyId = String(ficha.id ?? '');
+          const nombre = ficha.empresa || ficha.company;
+          if (/^[1-9][0-9]*$/.test(companyId) && nombre) {
+            empresa.append(new Option(nombre, companyId));
+          }
+        }
+        asignar.disabled = empresa.options.length === 1;
+        aviso.textContent = asignar.disabled ? 'No hay empresas disponibles.' : '';
+      }).catch(error => {
+        aviso.textContent = error.message;
+      });
+
+      form.addEventListener('submit', async evento => {
+        evento.preventDefault();
+        const companyId = empresa.value;
+        if (!companyId || asignar.disabled) return;
+        asignar.disabled = true;
+        empresa.disabled = true;
+        aviso.textContent = 'Guardando asignación…';
+        try {
+          const respuesta = await fetch('/admin-nuevo/comerciales-gestion-api.php', {
+            method:'POST',
+            credentials:'same-origin',
+            headers:{
+              'Content-Type':'application/json',
+              'X-CSRF-Token':await obtenerTokenComercial()
+            },
+            body:JSON.stringify({
+              action:'sales_lead_assign',
+              agent_id:String(a.id),
+              company_id:companyId
+            })
+          });
+          const resultado = await respuesta.json();
+          if (!respuesta.ok || !resultado.ok) {
+            throw Error(resultado.error || 'No se pudo asignar la empresa');
+          }
+          if (form.isConnected) await abrir(id, 'Empresa asignada.');
+        } catch (error) {
+          aviso.textContent = error.message;
+        } finally {
+          asignar.disabled = false;
+          empresa.disabled = false;
+        }
+      });
+      tabla('Oportunidades', d.oportunidades, [
+        ['ID','id'],['Empresa','company_name'],
+        ['Estado','status'],['Fecha','created_at']
+      ]);
+      tabla('Comisiones', d.comisiones, [
+        ['ID','id'],['Importe (céntimos)','amount_cents'],
+        ['Estado','status'],['Fecha','created_at']
+      ]);
+    } catch(e) {
+      estado.textContent = 'No se pudo consultar la actividad: ' + e.message;
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const boton = e.target.closest('[data-co-agent-activity]');
+    if (boton) abrir(boton.dataset.coAgentActivity);
+  });
+
+  const resumen = document.getElementById('co-sales-resumen');
+  if (resumen) {
+    const observer = new MutationObserver(() => {
+      resumen.querySelectorAll('[data-agent-id]').forEach(el => {
+        if (el.querySelector('[data-co-agent-activity]')) return;
+        const id = el.getAttribute('data-agent-id');
+        if (!/^\\d+$/.test(id)) return;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = 'Ver actividad';
+        b.dataset.coAgentActivity = id;
+        el.appendChild(b);
+      });
+    });
+    observer.observe(resumen, {childList:true,subtree:true});
+  }
+})();
+</script>
+  <div class="co-auto-panel">
+    <h2>Gestión comercial</h2>
+    <p>Agentes, comisiones y liquidaciones de ConectaObra.</p>
+    <button type="button" id="co-sales-actualizar">
+      Actualizar comerciales
+    </button>
+    <p id="co-sales-estado">Pendiente de consulta</p>
+    <div id="co-sales-resumen"></div>
+
+<!-- CO_ADMIN_SALES_SELECTOR_V1 -->
+<div id="co-admin-selector-comercial"
+     style="padding:18px;margin:15px 0;border:1px solid #ccd7e0;border-radius:10px">
+  <h3>Consultar actividad de un comercial</h3>
+  <label for="co-admin-agente">Selecciona un comercial:</label>
+  <select id="co-admin-agente" style="padding:10px;max-width:100%;margin:8px">
+    <option value="">Cargando comerciales…</option>
+  </select>
+  <button type="button" id="co-admin-ver-actividad">Ver actividad</button>
+  <p id="co-admin-selector-estado"></p>
+</div>
+<script>
+(() => {
+  const selector = document.getElementById('co-admin-agente');
+  const estado = document.getElementById('co-admin-selector-estado');
+  const boton = document.getElementById('co-admin-ver-actividad');
+
+  async function cargar() {
+    try {
+      const r = await fetch('/admin-nuevo/comerciales-api.php',
+        {credentials:'same-origin',cache:'no-store'});
+      const d = await r.json();
+      if (!r.ok || !d.ok) throw Error(d.error || 'Error de consulta');
+
+      selector.replaceChildren();
+      const inicial = document.createElement('option');
+      inicial.value = '';
+      inicial.textContent = 'Seleccionar comercial';
+      selector.appendChild(inicial);
+
+      for (const a of (d.agentes || [])) {
+        const o = document.createElement('option');
+        o.value = String(a.id);
+        o.textContent = 'Comercial #' + a.id +
+          ' · ' + (a.territory || 'Sin territorio') +
+          ' · ' + (a.status || 'Sin estado');
+        selector.appendChild(o);
+      }
+
+      estado.textContent = d.agentes.length
+        ? d.agentes.length + ' comerciales disponibles'
+        : 'Todavía no hay comerciales registrados';
+    } catch(e) {
+      estado.textContent = 'No se pudo cargar la lista: ' + e.message;
+    }
+  }
+
+  boton.addEventListener('click', () => {
+    if (!selector.value) {
+      estado.textContent = 'Selecciona primero un comercial';
+      return;
+    }
+    const evento = new MouseEvent('click',{bubbles:true});
+    const temporal = document.createElement('button');
+    temporal.dataset.coAgentActivity = selector.value;
+    temporal.hidden = true;
+    document.body.appendChild(temporal);
+    temporal.dispatchEvent(evento);
+    temporal.remove();
+  });
+
+  cargar();
+  document.getElementById('co-sales-actualizar')
+    ?.addEventListener('click', () => setTimeout(cargar, 400));
+})();
+</script>
+
+<div id="co-sales-formularios" style="margin-top:24px">
+  <h3>Alta de agente comercial</h3>
+  <form id="co-freelance-alta">
+  <label>Nombre y apellidos del comercial
+    <input name="full_name" maxlength="180" required>
+  </label>
+  <label>Correo electrónico profesional
+    <input name="email" type="email" maxlength="190" required>
+  </label>
+  <label>Número de teléfono
+    <input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40">
+  </label>
+  <label>Territorio asignado
+    <input name="territory" maxlength="255" required>
+  </label>
+  <button type="submit">Registrar comercial freelance</button>
+  <p id="co-freelance-estado" role="status"></p>
+</form>
+<p>El comercial se registrará inactivo y sin acceso al panel.</p>
+
+  <h3>Modificar agente</h3>
+  <form id="co-sales-territorio">
+    <label>ID del agente
+      <input name="agent_id" type="number" min="1" required>
+    </label>
+    <label>Nuevo territorio
+      <input name="territory" maxlength="255" required>
+    </label>
+    <button type="submit">Guardar territorio</button>
+  </form>
+
+  <form id="co-sales-estado-form" style="margin-top:16px">
+    <label>ID del agente
+      <input name="agent_id" type="number" min="1" required>
+    </label>
+    <label>Estado
+      <select name="active">
+        <option value="true">Activo</option>
+        <option value="false">Inactivo</option>
+      </select>
+    </label>
+    <button type="submit">Guardar estado</button>
+  </form>
+
+  <p id="co-sales-operacion-estado" role="status"></p>
+</div>
+
+  </div>
+</section>
+<section id="co-automatizaciones" hidden>
+  <div class="co-auto-panel">
+    <h2>Automatizaciones</h2>
+    <p>Supervisión de alertas y actividad automática de ConectaObra.</p>
+    <button type="button" id="co-auto-actualizar">Actualizar datos</button>
+    <p id="co-auto-estado">Pendiente de consulta</p>
+    <div id="co-auto-resumen"></div>
+  </div>
+</section>
+<aside id="detalle" class="empresa-detalle" hidden></aside><style>
+  #co-lista-mediaciones { align-items: start; }
+  .co-mediacion-ficha { min-width: 0; overflow-wrap: anywhere; }
+  .co-mediacion-ficha summary {
+    cursor: pointer; min-height: 44px; padding: 10px 0; font-weight: 700;
+  }
+  .co-mediacion-form { display: grid; gap: 12px; min-width: 0; }
+  .co-mediacion-form p { margin: 0; }
+  .co-mediacion-descripcion { white-space: pre-wrap; }
+  .co-mediacion-form label { display: grid; gap: 4px; min-width: 0; }
+  .co-mediacion-form input[type="number"],
+  .co-mediacion-form select,
+  .co-mediacion-form textarea {
+    box-sizing: border-box; width: 100%; max-width: 100%; min-height: 44px;
+    padding: 8px; font-size: 16px;
+  }
+  .co-mediacion-economia {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 175px), 1fr));
+  }
+  .co-mediacion-form .co-mediacion-acuerdo {
+    display: flex; align-items: center; gap: 8px; min-height: 44px;
+  }
+  .co-mediacion-acuerdo input { flex: 0 0 auto; width: 20px; height: 20px; }
+  .co-mediacion-form button { min-height: 44px; justify-self: start; }
+  .co-mediacion-form [role="status"]:empty { display: none; }
+  @media (max-width: 700px) {
+    #co-lista-mediaciones { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+<style>
+  .co-mediacion-documentos { margin-top: 16px; border-top: 1px solid #39566e; }
+  .co-mediacion-documentos input { max-width: 100%; min-width: 0; font-size: 16px; }
+  .co-mediacion-documentos li { overflow-wrap: anywhere; }
+</style>
+<script src="admin-empresas.js?v=mediaciones-documentos-1" defer></script>
+<!-- OPORTUNIDADES_V1 -->
+<section id="co-oportunidades" class="co-oportunidades" hidden>
+  <h2>Oportunidades</h2>
+  <p>Consulta de oportunidades reales de ConectaObra</p>
+  <input id="co-buscar-oportunidad" type="search"
+         placeholder="Buscar oportunidades..." aria-label="Buscar oportunidades">
+  <div id="co-lista-oportunidades" class="co-op-grid"></div>
+</section>
+
+
+<!-- MODULOS_ADMIN_V2 -->
+<section id="co-invitaciones" class="co-modulo" hidden>
+  <h2>Invitaciones</h2>
+  <p>Empresas invitadas a ConectaObra</p>
+  <input id="co-buscar-invitacion" type="search"
+         placeholder="Buscar empresa invitada...">
+  <div id="co-lista-invitaciones" class="co-modulo-grid"></div>
+</section>
+
+<section id="co-mediaciones" class="co-modulo" hidden>
+  <h2>Mediaciones</h2>
+  <p>Solicitudes de mediación de ConectaObra</p>
+  <input id="co-buscar-mediacion" type="search"
+         placeholder="Buscar mediación...">
+  <div id="co-lista-mediaciones" class="co-modulo-grid"></div>
+</section>
+
+
+<!-- CONECTAJOB_V1 -->
+<section id="co-conectajob" class="co-modulo" hidden>
+  <h2>ConectaJob</h2>
+  <p><a href="/conectajob/ofertas.php">Consultar ofertas publicadas</a></p>
+  <p>Ofertas de empleo registradas en ConectaObra</p>
+
+  <div class="co-job-toolbar">
+    <input id="co-job-buscar"
+           type="search"
+           placeholder="Buscar ofertas de empleo..."
+           aria-label="Buscar ofertas de empleo">
+    <button type="button" id="co-job-recargar">Actualizar</button>
+  </div>
+
+  <p id="co-job-estado" role="status">Pulsa ConectaJob para cargar las ofertas.</p>
+  <div id="co-job-lista" class="co-job-lista"></div>
+
+</section>
+
+<script src="/admin-nuevo/comercial-documentos.js?v=2" defer></script>
+</body></html>

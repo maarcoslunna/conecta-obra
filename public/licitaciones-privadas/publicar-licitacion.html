@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Publicar una licitación privada | ConectaObra</title>
+<meta name="description" content="Describe tu obra o proyecto y encuentra empresas del sector de la construcción. Publicación sujeta a verificación de correo y revisión.">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/licitaciones.css">
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html" aria-label="ConectaObra, inicio"><b>CONECTA<span>OBRA</span></b></a><span class="header-label">Licitaciones privadas</span></div></header>
+<section class="page-hero tender-hero"><div class="container"><div class="inner"><div class="eyebrow">ConectaObra · Solicitudes de obra</div><h1>Tu proyecto empieza con <em>las empresas adecuadas.</em></h1><p>¿Necesitas reformar, construir o contratar trabajos especializados? Describe tu proyecto y solicita el interés de empresas del sector. Sin crear una cuenta completa.</p></div></div></section>
+<main class="tender-main"><div class="container tender-layout"><div class="tender-content"><section class="panel tender-panel" aria-labelledby="formTitle"><div class="eyebrow">Paso 1 · Cuéntanos tu proyecto</div><h2 id="formTitle">Publicar una licitación</h2><p class="form-intro">Los campos marcados con * son obligatorios. Revisaremos tu solicitud antes de publicarla.</p><form id="tenderForm" novalidate>
+<h3 class="form-section-title">Datos del solicitante</h3><div class="form-grid">
+<div class="field"><label for="publisher_type">Publicas como *</label><select id="publisher_type" name="publisher_type" required><option value="">Selecciona una opción</option><option value="particular">Particular</option><option value="comunidad">Comunidad de propietarios</option><option value="empresa">Empresa</option><option value="promotora">Promotora</option></select></div>
+<div class="field"><label for="contact_name">Nombre de contacto *</label><input id="contact_name" name="contact_name" autocomplete="name" maxlength="120" required placeholder="Nombre y apellidos"></div>
+<div class="field full"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="nombre@ejemplo.com"><span class="field-help">Te enviaremos un enlace de verificación válido durante 24 horas.</span></div>
+</div>
+<h3 class="form-section-title">Información de la obra</h3><div class="form-grid">
+<div class="field full"><label for="title">Título del proyecto *</label><input id="title" name="title" maxlength="150" required placeholder="Ej.: Rehabilitación de fachada de comunidad"></div>
+<div class="field"><label for="work_type">Tipo de trabajo *</label><select id="work_type" name="work_type" required><option value="">Selecciona un tipo</option><option>Reforma y rehabilitación</option><option>Obra nueva</option><option>Instalaciones</option><option>Mantenimiento</option><option>Urbanización y obra civil</option><option>Servicios técnicos</option><option>Otros trabajos</option></select></div>
+<div class="field"><label for="province">Provincia *</label><select id="province" name="province" required><option value="">Selecciona una provincia</option></select></div>
+<div class="field full"><label for="municipality">Municipio *</label><input id="municipality" name="municipality" maxlength="120" required placeholder="Ej.: Dos Hermanas"></div>
+<div class="field full"><label for="description">Describe los trabajos que necesitas *</label><textarea id="description" name="description" rows="6" minlength="30" maxlength="5000" required placeholder="Explica el alcance de los trabajos, el estado actual, las necesidades principales y cualquier detalle útil para las empresas."></textarea><span class="field-help">No incluyas aquí teléfonos, correos ni datos personales de terceros.</span></div>
+<div class="field"><label for="budget">Presupuesto aproximado (€)</label><input id="budget" name="budget" type="number" min="0" max="999999999" step="100" inputmode="decimal" placeholder="Ej.: 45000"></div>
+<div class="field"><label for="start_date">Fecha prevista de inicio</label><input id="start_date" name="start_date" type="date"></div>
+<div class="field full"><label for="deadline">Fecha límite para recibir interés</label><input id="deadline" name="deadline" type="date"></div>
+</div>
+<div class="rgpd-box"><label class="checkbox-label" for="privacy"><input type="checkbox" id="privacy" name="privacy" required><span>He leído la <a href="../privacidad.html">Política de Privacidad</a> y entiendo que mis datos se usarán para gestionar esta solicitud. *</span></label><label class="checkbox-label secondary-consent" for="accuracy"><input type="checkbox" id="accuracy" name="accuracy" required><span>Confirmo que estoy autorizado/a para publicar esta solicitud y que los datos son correctos. *</span></label></div>
+<div id="formFeedback" class="notice" role="status" aria-live="polite" hidden></div><div class="form-actions"><button class="btn btn-primary btn-lg" type="submit">Enviar licitación para verificar correo</button><span class="form-note">Tu solicitud quedará pendiente de revisión tras verificar el correo.</span></div>
+</form></section></div>
+<aside class="tender-aside" aria-label="Cómo funciona"><div class="panel info-panel"><div class="eyebrow">Proceso de publicación</div><h2>Así funcionará</h2><ol class="process-list"><li><span>1</span><div><strong>Rellena el formulario</strong><p>Indica qué necesitas y dónde se realizará la obra.</p></div></li><li><span>2</span><div><strong>Verifica tu correo</strong><p>Recibirás un enlace de confirmación de un solo uso.</p></div></li><li><span>3</span><div><strong>Revisión de ConectaObra</strong><p>Comprobaremos la solicitud antes de publicarla.</p></div></li><li><span>4</span><div><strong>Empresas interesadas</strong><p>Las empresas registradas podrán mostrar interés en tu proyecto.</p></div></li></ol></div><div class="privacy-panel"><strong>🔒 Tus datos de contacto estarán protegidos</strong><p>El correo y el nombre del solicitante no aparecerán públicamente en el anuncio.</p></div></aside></div></main>
+<footer class="simple-footer"><div class="container"><strong>CONECTA<span>OBRA</span></strong><p>Plataforma de conexión empresarial para el sector de la construcción.</p><div><a href="../privacidad.html">Privacidad</a><a href="condiciones.html">Condiciones</a><a href="index.html">Inicio</a></div></div></footer>
+<script src="assets/licitaciones.js"></script>
+</body></html>
